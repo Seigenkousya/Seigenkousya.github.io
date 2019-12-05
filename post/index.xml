@@ -1,14 +1,14 @@
 <?xml version="1.0" encoding="utf-8" standalone="yes" ?>
 <rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
   <channel>
-    <title>正弦工社</title>
-    <link>https://Seigenkousya.github.io/</link>
-    <description>Recent content on 正弦工社</description>
+    <title>Posts on 正弦工社</title>
+    <link>https://Seigenkousya.github.io/post/</link>
+    <description>Recent content in Posts on 正弦工社</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>ja</language>
     <lastBuildDate>Sun, 17 Nov 2019 01:13:51 +0900</lastBuildDate>
     
-	<atom:link href="https://Seigenkousya.github.io/index.xml" rel="self" type="application/rss+xml" />
+	<atom:link href="https://Seigenkousya.github.io/post/index.xml" rel="self" type="application/rss+xml" />
     
     
     <item>
