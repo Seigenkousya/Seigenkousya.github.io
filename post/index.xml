@@ -6,10 +6,35 @@
     <description>Recent content in Posts on 正弦工社</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>ja</language>
-    <lastBuildDate>Thu, 19 Dec 2019 21:38:08 +0900</lastBuildDate>
+    <lastBuildDate>Sat, 21 Dec 2019 23:40:35 +0900</lastBuildDate>
     
 	<atom:link href="https://Seigenkousya.github.io/post/index.xml" rel="self" type="application/rss+xml" />
     
+    
+    <item>
+      <title>桃音ちゃんのAAの形をした桃音ちゃんのAAの形をした桃音ちゃんのAAの形をした...桃音ちゃんのAAを出力するプログラム</title>
+      <link>https://Seigenkousya.github.io/post/momone_aa/</link>
+      <pubDate>Sat, 21 Dec 2019 23:40:35 +0900</pubDate>
+      
+      <guid>https://Seigenkousya.github.io/post/momone_aa/</guid>
+      <description>この記事は「まんがタイムきらら Advent Calendar 2019」の23日目の記事にして13日目のオマケ記事です。
+プログラムの見た目自体は変わってないので伝わり辛いでしょうがお付き合いください。
+前回のあらすじ 精神を病んで桃音ちゃん型のプログラムを書いた。
+しかし、プログラムの内容はFizzBuzzという相崎先生に申し訳ないレベルの簡単なプログラム。
+もっと、見た人がおぉってなるようなプログラムにしたい。（あと、しょうもないコメントを使った手法から脱却したい）
+今回のあらすじ 出力自体も桃音ちゃんだったらめっちゃエモく無いですか？（唐突な思いつき）
+いっそのこと自己参照型のプログラムにしたら良さそう（これをQuine1と言います）。
+そんなこんな今回も気合で書いていきます。
+環境 前回に引き続きPerlで。
+$ uname -a Linux kali 4.18.0-kali2-amd64 #1 SMP Debian 4.18.10-2kali1 (2018-10-09) x86_64 GNU/Linux $ perl --version This is perl 5, version 28, subversion 1 (v5.28.1) built for x86_64-linux-gnu-thread-multi Quineとは？ wikiの説明を借りると、
+ クワイン（英: Quine）は、コンピュータプログラムの一種で、自身のソースコードと完全に同じ文字列を出力するプログラムである。
+ 要はプログラムと出力がまったく等しいプログラムのことです。
+perlでいうとこう。
+$_=q{print&amp;#34;\$_=q{$_};eval&amp;#34;};eval 実際に確かめてみると、
+$ perl -E &amp;#39;$_=q{print&amp;#34;\$_=q{$_};eval&amp;#34;};eval&amp;#39; $_=q{print&amp;#34;\$_=q{$_};eval&amp;#34;};eval たしかに入力と出力が一致する。
+これは、
+ 暗黙変数$_にq{print&amp;quot;\$\_=q{$_};eval&amp;quot;}を代入する evalが実行される evalは暗黙的に$_を参照するのでq{print&amp;quot;\$_=q{$_};eval&amp;quot;}がevalに渡される q演算子q//より、文字列print&amp;quot;\$_=q{$_};eval&amp;quot;が渡されることになる evalに渡されるprint&amp;quot;\$_=q{$_};eval&amp;quot;のうち、エスケープされていないq{$_}の部分の$_は最初に代入したq{print&amp;quot;\$\_=q{$_};eval&amp;quot;}になるので 標準出力に$_=q{print&amp;quot;\$_=q{$_};eval&amp;quot;};evalが出力される  という流れで実行されるからです。</description>
+    </item>
     
     <item>
       <title>まんがタイムきららMAX2月号感想</title>

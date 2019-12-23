@@ -1,0 +1,217 @@
+<!doctype html>
+<html lang="ja">
+  <head>
+    <title>桃音ちゃんのAAの形をした桃音ちゃんのAAの形をした桃音ちゃんのAAの形をした...桃音ちゃんのAAを出力するプログラム // 正弦工社</title>
+    <meta charset="utf-8" />
+    <meta name="generator" content="Hugo 0.58.3" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <meta name="author" content="Takana Norimasa" />
+    <meta name="description" content="" />
+    <link rel="stylesheet" href="https://Seigenkousya.github.io/css/main.min.2d76428025a28172dfa0d16efa93ed6949b867d45db5ece6eb78be47f8180a21.css" />
+
+    
+    <meta name="twitter:card" content="summary"/>
+<meta name="twitter:title" content="桃音ちゃんのAAの形をした桃音ちゃんのAAの形をした桃音ちゃんのAAの形をした...桃音ちゃんのAAを出力するプログラム"/>
+<meta name="twitter:description" content="この記事は「まんがタイムきらら Advent Calendar 2019」の23日目の記事にして13日目のオマケ記事です。
+プログラムの見た目自体は変わってないので伝わり辛いでしょうがお付き合いください。
+前回のあらすじ 精神を病んで桃音ちゃん型のプログラムを書いた。
+しかし、プログラムの内容はFizzBuzzという相崎先生に申し訳ないレベルの簡単なプログラム。
+もっと、見た人がおぉってなるようなプログラムにしたい。（あと、しょうもないコメントを使った手法から脱却したい）
+今回のあらすじ 出力自体も桃音ちゃんだったらめっちゃエモく無いですか？（唐突な思いつき）
+いっそのこと自己参照型のプログラムにしたら良さそう（これをQuine1と言います）。
+そんなこんな今回も気合で書いていきます。
+環境 前回に引き続きPerlで。
+$ uname -a Linux kali 4.18.0-kali2-amd64 #1 SMP Debian 4.18.10-2kali1 (2018-10-09) x86_64 GNU/Linux $ perl --version This is perl 5, version 28, subversion 1 (v5.28.1) built for x86_64-linux-gnu-thread-multi Quineとは？ wikiの説明を借りると、
+ クワイン（英: Quine）は、コンピュータプログラムの一種で、自身のソースコードと完全に同じ文字列を出力するプログラムである。
+ 要はプログラムと出力がまったく等しいプログラムのことです。
+perlでいうとこう。
+$_=q{print&#34;\$_=q{$_};eval&#34;};eval 実際に確かめてみると、
+$ perl -E &#39;$_=q{print&#34;\$_=q{$_};eval&#34;};eval&#39; $_=q{print&#34;\$_=q{$_};eval&#34;};eval たしかに入力と出力が一致する。
+これは、
+ 暗黙変数$_にq{print&quot;\$\_=q{$_};eval&quot;}を代入する evalが実行される evalは暗黙的に$_を参照するのでq{print&quot;\$_=q{$_};eval&quot;}がevalに渡される q演算子q//より、文字列print&quot;\$_=q{$_};eval&quot;が渡されることになる evalに渡されるprint&quot;\$_=q{$_};eval&quot;のうち、エスケープされていないq{$_}の部分の$_は最初に代入したq{print&quot;\$\_=q{$_};eval&quot;}になるので 標準出力に$_=q{print&quot;\$_=q{$_};eval&quot;};evalが出力される  という流れで実行されるからです。"/>
+
+    <meta property="og:title" content="桃音ちゃんのAAの形をした桃音ちゃんのAAの形をした桃音ちゃんのAAの形をした...桃音ちゃんのAAを出力するプログラム" />
+<meta property="og:description" content="この記事は「まんがタイムきらら Advent Calendar 2019」の23日目の記事にして13日目のオマケ記事です。
+プログラムの見た目自体は変わってないので伝わり辛いでしょうがお付き合いください。
+前回のあらすじ 精神を病んで桃音ちゃん型のプログラムを書いた。
+しかし、プログラムの内容はFizzBuzzという相崎先生に申し訳ないレベルの簡単なプログラム。
+もっと、見た人がおぉってなるようなプログラムにしたい。（あと、しょうもないコメントを使った手法から脱却したい）
+今回のあらすじ 出力自体も桃音ちゃんだったらめっちゃエモく無いですか？（唐突な思いつき）
+いっそのこと自己参照型のプログラムにしたら良さそう（これをQuine1と言います）。
+そんなこんな今回も気合で書いていきます。
+環境 前回に引き続きPerlで。
+$ uname -a Linux kali 4.18.0-kali2-amd64 #1 SMP Debian 4.18.10-2kali1 (2018-10-09) x86_64 GNU/Linux $ perl --version This is perl 5, version 28, subversion 1 (v5.28.1) built for x86_64-linux-gnu-thread-multi Quineとは？ wikiの説明を借りると、
+ クワイン（英: Quine）は、コンピュータプログラムの一種で、自身のソースコードと完全に同じ文字列を出力するプログラムである。
+ 要はプログラムと出力がまったく等しいプログラムのことです。
+perlでいうとこう。
+$_=q{print&#34;\$_=q{$_};eval&#34;};eval 実際に確かめてみると、
+$ perl -E &#39;$_=q{print&#34;\$_=q{$_};eval&#34;};eval&#39; $_=q{print&#34;\$_=q{$_};eval&#34;};eval たしかに入力と出力が一致する。
+これは、
+ 暗黙変数$_にq{print&quot;\$\_=q{$_};eval&quot;}を代入する evalが実行される evalは暗黙的に$_を参照するのでq{print&quot;\$_=q{$_};eval&quot;}がevalに渡される q演算子q//より、文字列print&quot;\$_=q{$_};eval&quot;が渡されることになる evalに渡されるprint&quot;\$_=q{$_};eval&quot;のうち、エスケープされていないq{$_}の部分の$_は最初に代入したq{print&quot;\$\_=q{$_};eval&quot;}になるので 標準出力に$_=q{print&quot;\$_=q{$_};eval&quot;};evalが出力される  という流れで実行されるからです。" />
+<meta property="og:type" content="article" />
+<meta property="og:url" content="https://Seigenkousya.github.io/post/momone_aa/" />
+<meta property="article:published_time" content="2019-12-21T23:40:35+09:00" />
+<meta property="article:modified_time" content="2019-12-21T23:40:35+09:00" />
+
+
+  </head>
+  <body>
+    <header class="app-header">
+      <a href="https://Seigenkousya.github.io/"><img class="app-header-avatar" src="/avatar.jpg" alt="Takana Norimasa" /></a>
+      <h1>正弦工社</h1>
+      <p>正弦工社 is 技術{同人|結社|集団|コミュニティ|ブログ} </p>
+      <div class="app-header-social">
+        
+          <a target="_blank" href="https://twitter.com/Seigenkousya" rel="noreferrer noopener"><svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="icon icon-twitter">
+  <title>twitter</title>
+  <path d="M23 3a10.9 10.9 0 0 1-3.14 1.53 4.48 4.48 0 0 0-7.86 3v1A10.66 10.66 0 0 1 3 4s-4 9 5 13a11.64 11.64 0 0 1-7 2c9 5 20 0 20-11.5a4.5 4.5 0 0 0-.08-.83A7.72 7.72 0 0 0 23 3z"></path>
+</svg></a>
+        
+          <a target="_blank" href="https://github.com/Seigenkousya" rel="noreferrer noopener"><svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="icon icon-github">
+  <title>github</title>
+  <path d="M9 19c-5 1.5-5-2.5-7-3m14 6v-3.87a3.37 3.37 0 0 0-.94-2.61c3.14-.35 6.44-1.54 6.44-7A5.44 5.44 0 0 0 20 4.77 5.07 5.07 0 0 0 19.91 1S18.73.65 16 2.48a13.38 13.38 0 0 0-7 0C6.27.65 5.09 1 5.09 1A5.07 5.07 0 0 0 5 4.77a5.44 5.44 0 0 0-1.5 3.78c0 5.42 3.3 6.61 6.44 7A3.37 3.37 0 0 0 9 18.13V22"></path>
+</svg></a>
+        
+          <a target="_blank" href="https://qiita.com/Seigenkousya" rel="noreferrer noopener"><svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="icon icon-link">
+  <path d="M10 13a5 5 0 0 0 7.54.54l3-3a5 5 0 0 0-7.07-7.07l-1.72 1.71"></path>
+  <path d="M14 11a5 5 0 0 0-7.54-.54l-3 3a5 5 0 0 0 7.07 7.07l1.71-1.71"></path>
+</svg></a>
+        
+      </div>
+      <a href="https://seigenkousya.github.io/">home</a>
+      <a href="https://seigenkousya.github.io/post/hello_world/">about</a>
+    </header>
+    <main class="app-container">
+      
+  <article class="post">
+    <header class="post-header">
+      <h1 class ="post-title">桃音ちゃんのAAの形をした桃音ちゃんのAAの形をした桃音ちゃんのAAの形をした...桃音ちゃんのAAを出力するプログラム</h1>
+      <div class="post-meta">
+        <div>
+          <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="icon icon-calendar">
+  <title>calendar</title>
+  <rect x="3" y="4" width="18" height="18" rx="2" ry="2"></rect><line x1="16" y1="2" x2="16" y2="6"></line><line x1="8" y1="2" x2="8" y2="6"></line><line x1="3" y1="10" x2="21" y2="10"></line>
+</svg>
+          Dec 21, 2019
+        </div>
+        <div>
+          <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="icon icon-clock">
+  <title>clock</title>
+  <circle cx="12" cy="12" r="10"></circle><polyline points="12 6 12 12 16 14"></polyline>
+</svg>
+          1 min read
+        </div></div>
+    </header>
+    <div class="post-content">
+      
+
+<p>この記事は「<a href="https://adventar.org/calendars/4098">まんがタイムきらら Advent Calendar 2019</a>」の23日目の記事にして<a href="https://seigenkousya.github.io/post/momone_fizzbuzz/">13日目</a>のオマケ記事です。<br />
+プログラムの見た目自体は変わってないので伝わり辛いでしょうがお付き合いください。</p>
+
+<h1 id="前回のあらすじ">前回のあらすじ</h1>
+
+<p>精神を病んで桃音ちゃん型のプログラムを書いた。<br />
+<img src="/images/1_momone_FizzBuzz.png" alt="momone_FizzBuzz" />
+しかし、プログラムの内容はFizzBuzzという相崎先生に申し訳ないレベルの簡単なプログラム。<br />
+もっと、見た人がおぉってなるようなプログラムにしたい。（<del>あと、しょうもないコメントを使った手法から脱却したい</del>）</p>
+
+<h1 id="今回のあらすじ">今回のあらすじ</h1>
+
+<p>出力自体も桃音ちゃんだったらめっちゃエモく無いですか？（唐突な思いつき）<br />
+いっそのこと自己参照型のプログラムにしたら良さそう（これをQuine<sup class="footnote-ref" id="fnref:1"><a href="#fn:1">1</a></sup>と言います）。<br />
+そんなこんな今回も気合で書いていきます。</p>
+
+<h2 id="環境">環境</h2>
+
+<p>前回に引き続きPerlで。</p>
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-terminal" data-lang="terminal">$ uname -a
+Linux kali 4.18.0-kali2-amd64 #1 SMP Debian 4.18.10-2kali1 (2018-10-09) x86_64 GNU/Linux
+$ perl --version
+This is perl 5, version 28, subversion 1 (v5.28.1) built for x86_64-linux-gnu-thread-multi</code></pre></div>
+<h2 id="quineとは">Quineとは？</h2>
+
+<p>wikiの説明を借りると、</p>
+
+<blockquote>
+<p>クワイン（英: Quine）は、コンピュータプログラムの一種で、自身のソースコードと完全に同じ文字列を出力するプログラムである。</p>
+</blockquote>
+
+<p>要はプログラムと出力がまったく等しいプログラムのことです。<br />
+perlでいうとこう。</p>
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-perl" data-lang="perl">$_<span style="color:#f92672">=</span><span style="color:#e6db74">q{print&#34;\$_=q{$_};eval&#34;}</span>;eval</code></pre></div>
+<p>実際に確かめてみると、</p>
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-terminal" data-lang="terminal">$ perl -E &#39;$_=q{print&#34;\$_=q{$_};eval&#34;};eval&#39;
+$_=q{print&#34;\$_=q{$_};eval&#34;};eval</code></pre></div>
+<p>たしかに入力と出力が一致する。<br />
+これは、</p>
+
+<ol>
+<li>暗黙変数$_に<code>q{print&quot;\$\_=q{$_};eval&quot;}</code>を代入する</li>
+<li>evalが実行される</li>
+<li>evalは暗黙的に<code>$_</code>を参照するので<code>q{print&quot;\$_=q{$_};eval&quot;}</code>がevalに渡される</li>
+<li>q演算子<code>q//</code>より、文字列<code>print&quot;\$_=q{$_};eval&quot;</code>が渡されることになる</li>
+<li>evalに渡される<code>print&quot;\$_=q{$_};eval&quot;</code>のうち、エスケープされていない<code>q{$_}</code>の部分の<code>$_</code>は最初に代入した<code>q{print&quot;\$\_=q{$_};eval&quot;}</code>になるので</li>
+<li>標準出力に<code>$_=q{print&quot;\$_=q{$_};eval&quot;};eval</code>が出力される</li>
+</ol>
+
+<p>という流れで実行されるからです。</p>
+
+<p>これらの実行の流れを見ているとあることに気がつきます。<br />
+それは、<code>print</code>命令の前に何を置いてもQuineとして成立するということです。<br />
+何を書こうが暗黙変数で参照されてQuineになります。ただし、標準出力に関係ない処理である必要があります。<br />
+例えば、変数helloを置いてもQuineは成立します。</p>
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-perl" data-lang="perl">$_<span style="color:#f92672">=</span><span style="color:#e6db74">q{$hello;print&#34;\$_=q{$_};eval&#34;}</span>;eval</code></pre></div>
+<p>試してみると、</p>
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-terminal" data-lang="terminal">$ perl -E &#39;$_=q{$hello;print&#34;\$_=q{$_};eval&#34;};eval&#39;
+$_=q{$hello;print&#34;\$_=q{$_};eval&#34;};eval</code></pre></div>
+<p>大丈夫。<br />
+ならばこれを応用すればAAにも適用できるのでは？と考えました。</p>
+
+<h1 id="実際にやってみた">実際にやってみた</h1>
+
+<p>実際の構造はこんな感じ。</p>
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-perl" data-lang="perl">$_<span style="color:#f92672">=</span><span style="color:#e6db74">q|q* Ascii art *;print&#34;\$_=q{$_};eval&#34;;q* Ascii art *;|</span>;eval;</code></pre></div>
+<p>できるだけAscii artの部分を最大化してコード部分を短くしました。<br />
+q演算子の区切りにはAAで使用率の低かった<code>|</code>と<code>*</code>を採用しました。</p>
+
+<p>できたコードがこちら。（前回の上の画像と変わらないじゃないかだって？動かせば分かりますよ）</p>
+
+<p><img src="/images/momone_quine.png" alt="momone_quine" /></p>
+
+<p>このプログラムは桃音ちゃんのAAであると同時に桃音ちゃんのAAを表示するプログラムでもあります。<br />
+そして、この表示プログラムはQuineの要件を満たしているため自己参照プログラムでもあります。<br />
+つまり、このプログラムは桃音ちゃんのAAを表示するプログラムであると同時に桃音ちゃんのAAを表示するプログラムを表示するプログラムでもあるのです。<br />
+これらのことをまとめるとこのプログラムは桃音ちゃんのAAの外見をした桃音ちゃんのAAを表示するプログラムを表示するプログラムを表示するプログラムを表示するプログラム&hellip;ということになります。</p>
+
+<p><font size="36">~𝑯𝒂𝒑𝒑𝒚 𝑬𝒏𝒅~</font></p>
+
+<h1 id="終わりに">終わりに</h1>
+
+<p>前回から少し成長してコメントを使ったせこい技を使わずに済んだのは大きいかなと思います。<br />
+桃音ちゃんから桃音ちゃんが生成されるなんて素晴らしいですね。<br />
+まだまだ可能性はいっぱいあると思うのでこれからも精進したいなぁと思いました。</p>
+
+<p>まぁこれを読んでいる読者諸氏なら当然持っているだろうが、一応言っておく。<br />
+どうして私が美術科に！？を買おう！（ダイマ）<br />
+<a href="https://www.amazon.co.jp/gp/product/B06XFYK4PN?ref_=dbs_p_pwh_rwt_anx_cl_0&amp;storeType=ebooks">1巻：https://www.amazon.co.jp/gp/product/B06XFYK4PN?ref_=dbs_p_pwh_rwt_anx_cl_0&amp;storeType=ebooks</a><br />
+<a href="https://www.amazon.co.jp/gp/product/B07BRMN6S7?ref_=dbs_p_pwh_rwt_anx_cl_1&amp;storeType=ebooks">2巻：https://www.amazon.co.jp/gp/product/B07BRMN6S7?ref_=dbs_p_pwh_rwt_anx_cl_1&amp;storeType=ebooks</a><br />
+<a href="https://www.amazon.co.jp/gp/product/B07QCBKKZB?ref_=dbs_p_pwh_rwt_anx_cl_1&amp;storeType=ebooks">3巻：https://www.amazon.co.jp/gp/product/B07QCBKKZB?ref_=dbs_p_pwh_rwt_anx_cl_1&amp;storeType=ebooks</a></p>
+<div class="footnotes">
+
+<hr />
+
+<ol>
+<li id="fn:1"><a href="https://ja.wikipedia.org/wiki/%E3%82%AF%E3%83%AF%E3%82%A4%E3%83%B3_(%E3%83%97%E3%83%AD%E3%82%B0%E3%83%A9%E3%83%9F%E3%83%B3%E3%82%B0)">Quineのwikipedia</a>
+ <a class="footnote-return" href="#fnref:1"><sup>[return]</sup></a></li>
+</ol>
+</div>
+
+    </div>
+    <div class="post-footer">
+      
+    </div>
+  </article>
+
+    </main>
+  </body>
+</html>
