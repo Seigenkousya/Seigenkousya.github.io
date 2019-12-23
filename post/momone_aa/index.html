@@ -158,13 +158,13 @@ $_=q{print&#34;\$_=q{$_};eval&#34;};eval</code></pre></div>
 
 <p>これらの実行の流れを見ているとあることに気がつきます。<br />
 それは、<code>print</code>命令の前に何を置いてもQuineとして成立するということです。<br />
-何を書こうが暗黙変数で参照されてQuineになります。ただし、標準出力に関係ない処理である必要があります。<br />
-例えば、変数helloを置いてもQuineは成立します。</p>
+何を書こうが暗黙変数で参照されてQuineになりますが、標準出力に関係ない処理である必要があります。<br />
+例えば、変数<code>$hello</code>をprint命令の前に置いてもQuineは成立します。</p>
 <div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-perl" data-lang="perl">$_<span style="color:#f92672">=</span><span style="color:#e6db74">q{$hello;print&#34;\$_=q{$_};eval&#34;}</span>;eval</code></pre></div>
 <p>試してみると、</p>
 <div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-terminal" data-lang="terminal">$ perl -E &#39;$_=q{$hello;print&#34;\$_=q{$_};eval&#34;};eval&#39;
 $_=q{$hello;print&#34;\$_=q{$_};eval&#34;};eval</code></pre></div>
-<p>大丈夫。<br />
+<p>ちゃんと動く。<br />
 ならばこれを応用すればAAにも適用できるのでは？と考えました。</p>
 
 <h1 id="実際にやってみた">実際にやってみた</h1>
@@ -188,10 +188,10 @@ q演算子の区切りにはAAで使用率の低かった<code>|</code>と<code>
 <h1 id="終わりに">終わりに</h1>
 
 <p>前回から少し成長してコメントを使ったせこい技を使わずに済んだのは大きいかなと思います。<br />
-桃音ちゃんから桃音ちゃんが生成されるなんて素晴らしいですね。<br />
-まだまだ可能性はいっぱいあると思うのでこれからも精進したいなぁと思いました。</p>
+桃音ちゃんから桃音ちゃんが生成されるなんて素晴らしいですね。（危険な主義主張）<br />
+プログラミングにはまだまだ可能性がいっぱいあると思うのでこれからも精進していきたいなぁと思いました。</p>
 
-<p>まぁこれを読んでいる読者諸氏なら当然持っているだろうが、一応言っておく。<br />
+<p>まぁこの記事を読んでいる読者諸氏なら当然持っているだろうが、一応言っておく。<br />
 どうして私が美術科に！？を買おう！（ダイマ）<br />
 <a href="https://www.amazon.co.jp/gp/product/B06XFYK4PN?ref_=dbs_p_pwh_rwt_anx_cl_0&amp;storeType=ebooks">1巻：https://www.amazon.co.jp/gp/product/B06XFYK4PN?ref_=dbs_p_pwh_rwt_anx_cl_0&amp;storeType=ebooks</a><br />
 <a href="https://www.amazon.co.jp/gp/product/B07BRMN6S7?ref_=dbs_p_pwh_rwt_anx_cl_1&amp;storeType=ebooks">2巻：https://www.amazon.co.jp/gp/product/B07BRMN6S7?ref_=dbs_p_pwh_rwt_anx_cl_1&amp;storeType=ebooks</a><br />
