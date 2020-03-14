@@ -1,0 +1,451 @@
+<!doctype html>
+<html lang="ja">
+  <head>
+	  <link rel="apple-touch-icon" sizes="57x57" href="/apple-icon-57x57.png">
+	<link rel="apple-touch-icon" sizes="60x60" href="/apple-icon-60x60.png">
+	<link rel="apple-touch-icon" sizes="72x72" href="/apple-icon-72x72.png">
+	<link rel="apple-touch-icon" sizes="76x76" href="/apple-icon-76x76.png">
+	<link rel="apple-touch-icon" sizes="114x114" href="/apple-icon-114x114.png">
+	<link rel="apple-touch-icon" sizes="120x120" href="/apple-icon-120x120.png">
+	<link rel="apple-touch-icon" sizes="144x144" href="/apple-icon-144x144.png">
+	<link rel="apple-touch-icon" sizes="152x152" href="/apple-icon-152x152.png">
+	<link rel="apple-touch-icon" sizes="180x180" href="/apple-icon-180x180.png">
+	<link rel="icon" type="image/png" sizes="192x192"  href="/android-icon-192x192.png">
+	<link rel="icon" type="image/png" sizes="32x32" href="/favicon-32x32.png">
+	<link rel="icon" type="image/png" sizes="96x96" href="/favicon-96x96.png">
+	<link rel="icon" type="image/png" sizes="16x16" href="/favicon-16x16.png">
+	<link rel="manifest" href="/manifest.json">
+	<meta name="msapplication-TileColor" content="#ffffff">
+	<meta name="msapplication-TileImage" content="/ms-icon-144x144.png">
+	<meta name="theme-color" content="#ffffff">
+    <title>まんがタイムきららMAXの掲載順を可視化・分析する2 // 正弦工社</title>
+
+
+<script async src="https://www.googletagmanager.com/gtag/js?id=UA-158095539-1"></script>
+<script>
+  window.dataLayer = window.dataLayer || [];
+  function gtag(){dataLayer.push(arguments);}
+  gtag('js', new Date());
+
+  gtag('config', 'UA-158095539-1');
+</script>
+
+
+<meta charset="utf-8" />
+    <meta name="generator" content="Hugo 0.59.1" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <meta name="author" content="Takana Norimasa" />
+    <meta name="description" content="" />
+    <link rel="stylesheet" href="https://Seigenkousya.github.io/css/main.min.2d76428025a28172dfa0d16efa93ed6949b867d45db5ece6eb78be47f8180a21.css" />
+
+    
+<script type="application/javascript">
+var doNotTrack = false;
+if (!doNotTrack) {
+	(function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
+	(i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
+	m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
+	})(window,document,'script','https://www.google-analytics.com/analytics.js','ga');
+	ga('create', 'UA-158095539-1', 'auto');
+	
+	ga('send', 'pageview');
+}
+</script>
+
+    <meta name="twitter:card" content="summary"/>
+<meta name="twitter:title" content="まんがタイムきららMAXの掲載順を可視化・分析する2"/>
+<meta name="twitter:description" content="はじめに この記事は過去に書いたどうびじゅの連載終了が告知され心と胃を痛めているきららmax読者のためのスクレイピングを使ったデータ収集と考察のススメ - Qiitaのリバイバル版です。
+ もうこの記事から1年経っているので新しくデータを集めて可視化しようかなと。
+毎年一回はやりたいなこれ。（気に入ってる）
+キャラット版は[こちら]()（まだ作ってない）
+データの収集 なんと書いた本人がやり方を全く覚えていません。
+結局自分が書いた記事を読む羽目に。（技術者あるある）
+解説は上の記事でやったのでやりません。（無情）　と思ったけど書き直したのでやっぱちょっとやる。
+この記事を見てやってみたいって思った人がいたら、やり方とか注意事項とか書いてあるので最初に貼ったリンクを読んでね。
+環境 実行環境はこちら。
+$ uname -a Linux kali 4.18.0-kali2-amd64 #1 SMP Debian 4.18.10-2kali1 (2018-10-09) x86_64 GNU/Linux $ python3 --version Python 3.7.6 $ pip3 show requests Name: requests Version: 2.22.0 $ pip3 show beautifulsoup4 Name: beautifulsoup4 Version: 4.8.2 $ pip3 show matplotlib Name: matplotlib Version: 3.1.2 $ pip3 show numpy Name: numpy Version: 1.17.4 $ pip3 show chardet Name: chardet Version: 3."/>
+
+    <meta property="og:title" content="まんがタイムきららMAXの掲載順を可視化・分析する2" />
+<meta property="og:description" content="はじめに この記事は過去に書いたどうびじゅの連載終了が告知され心と胃を痛めているきららmax読者のためのスクレイピングを使ったデータ収集と考察のススメ - Qiitaのリバイバル版です。
+ もうこの記事から1年経っているので新しくデータを集めて可視化しようかなと。
+毎年一回はやりたいなこれ。（気に入ってる）
+キャラット版は[こちら]()（まだ作ってない）
+データの収集 なんと書いた本人がやり方を全く覚えていません。
+結局自分が書いた記事を読む羽目に。（技術者あるある）
+解説は上の記事でやったのでやりません。（無情）　と思ったけど書き直したのでやっぱちょっとやる。
+この記事を見てやってみたいって思った人がいたら、やり方とか注意事項とか書いてあるので最初に貼ったリンクを読んでね。
+環境 実行環境はこちら。
+$ uname -a Linux kali 4.18.0-kali2-amd64 #1 SMP Debian 4.18.10-2kali1 (2018-10-09) x86_64 GNU/Linux $ python3 --version Python 3.7.6 $ pip3 show requests Name: requests Version: 2.22.0 $ pip3 show beautifulsoup4 Name: beautifulsoup4 Version: 4.8.2 $ pip3 show matplotlib Name: matplotlib Version: 3.1.2 $ pip3 show numpy Name: numpy Version: 1.17.4 $ pip3 show chardet Name: chardet Version: 3." />
+<meta property="og:type" content="article" />
+<meta property="og:url" content="https://Seigenkousya.github.io/post/kirara_order_2020/" />
+<meta property="article:published_time" content="2020-03-14T13:37:56+09:00" />
+<meta property="article:modified_time" content="2020-03-14T13:37:56+09:00" />
+
+
+  </head>
+  <body>
+    <header class="app-header">
+      <a href="https://Seigenkousya.github.io/"><img class="app-header-avatar" src="/avatar.jpg" alt="Takana Norimasa" /></a>
+      <h1>正弦工社</h1>
+      <p>正弦工社 is 技術{同人|結社|集団|コミュニティ|ブログ} </p>
+      <div class="app-header-social">
+        
+          <a target="_blank" href="https://twitter.com/Seigenkousya" rel="noreferrer noopener"><svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="icon icon-twitter">
+  <title>twitter</title>
+  <path d="M23 3a10.9 10.9 0 0 1-3.14 1.53 4.48 4.48 0 0 0-7.86 3v1A10.66 10.66 0 0 1 3 4s-4 9 5 13a11.64 11.64 0 0 1-7 2c9 5 20 0 20-11.5a4.5 4.5 0 0 0-.08-.83A7.72 7.72 0 0 0 23 3z"></path>
+</svg></a>
+        
+          <a target="_blank" href="https://github.com/Seigenkousya" rel="noreferrer noopener"><svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="icon icon-github">
+  <title>github</title>
+  <path d="M9 19c-5 1.5-5-2.5-7-3m14 6v-3.87a3.37 3.37 0 0 0-.94-2.61c3.14-.35 6.44-1.54 6.44-7A5.44 5.44 0 0 0 20 4.77 5.07 5.07 0 0 0 19.91 1S18.73.65 16 2.48a13.38 13.38 0 0 0-7 0C6.27.65 5.09 1 5.09 1A5.07 5.07 0 0 0 5 4.77a5.44 5.44 0 0 0-1.5 3.78c0 5.42 3.3 6.61 6.44 7A3.37 3.37 0 0 0 9 18.13V22"></path>
+</svg></a>
+        
+          <a target="_blank" href="https://qiita.com/Seigenkousya" rel="noreferrer noopener"><svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="icon icon-link">
+  <path d="M10 13a5 5 0 0 0 7.54.54l3-3a5 5 0 0 0-7.07-7.07l-1.72 1.71"></path>
+  <path d="M14 11a5 5 0 0 0-7.54-.54l-3 3a5 5 0 0 0 7.07 7.07l1.71-1.71"></path>
+</svg></a>
+        
+      </div>
+      <a href="https://seigenkousya.github.io/">home</a>
+      <a href="https://seigenkousya.github.io/post/hello_world/">about</a>
+    </header>
+    <main class="app-container">
+      
+  <article class="post">
+    <header class="post-header">
+      <h1 class ="post-title">まんがタイムきららMAXの掲載順を可視化・分析する2</h1>
+      <div class="post-meta">
+        <div>
+          <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="icon icon-calendar">
+  <title>calendar</title>
+  <rect x="3" y="4" width="18" height="18" rx="2" ry="2"></rect><line x1="16" y1="2" x2="16" y2="6"></line><line x1="8" y1="2" x2="8" y2="6"></line><line x1="3" y1="10" x2="21" y2="10"></line>
+</svg>
+          Mar 14, 2020
+        </div>
+        <div>
+          <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="icon icon-clock">
+  <title>clock</title>
+  <circle cx="12" cy="12" r="10"></circle><polyline points="12 6 12 12 16 14"></polyline>
+</svg>
+          2 min read
+        </div></div>
+    </header>
+    <div class="post-content">
+      
+
+<h1 id="はじめに">はじめに</h1>
+
+<p>この記事は過去に書いた<a href="https://qiita.com/Seigenkousya/items/8f0ffbd2c34a8e8535e2">どうびじゅの連載終了が告知され心と胃を痛めているきららmax読者のためのスクレイピングを使ったデータ収集と考察のススメ - Qiita</a>のリバイバル版です。<br />
+<div class="iframely-embed"><div class="iframely-responsive" style="height: 140px; width:600px; padding-bottom: 0;"><a href="https://qiita.com/Seigenkousya/items/8f0ffbd2c34a8e8535e2" data-iframely-url="//cdn.iframe.ly/api/iframe?url=https%3A%2F%2Fqiita.com%2FSeigenkousya%2Fitems%2F8f0ffbd2c34a8e8535e2&key=dd60c159c87f40f1ecca839b51b281e8&iframe=card-small"></a></div></div><script async src="https://cdn.iframe.ly/embed.js" charset="utf-8"></script>
+もうこの記事から1年経っているので新しくデータを集めて可視化しようかなと。<br />
+毎年一回はやりたいなこれ。（気に入ってる）<br />
+キャラット版は[こちら]()（まだ作ってない）</p>
+
+<h1 id="データの収集">データの収集</h1>
+
+<p>なんと書いた本人がやり方を全く覚えていません。<br />
+結局自分が書いた記事を読む羽目に。（技術者あるある）<br />
+<del>解説は上の記事でやったのでやりません。（無情）</del>　と思ったけど書き直したのでやっぱちょっとやる。<br />
+この記事を見てやってみたいって思った人がいたら、やり方とか注意事項とか書いてあるので最初に貼ったリンクを読んでね。</p>
+
+<h3 id="環境">環境</h3>
+
+<p>実行環境はこちら。</p>
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-terminal" data-lang="terminal">$ uname -a                                                                                                                              
+Linux kali 4.18.0-kali2-amd64 #1 SMP Debian 4.18.10-2kali1 (2018-10-09) x86_64 GNU/Linux
+
+$ python3 --version                                                                                                                             
+Python 3.7.6
+
+$ pip3 show requests                                                                                                                           
+Name: requests
+Version: 2.22.0
+
+$ pip3 show beautifulsoup4                                                                                                                     
+Name: beautifulsoup4
+Version: 4.8.2
+
+$ pip3 show matplotlib                                                                                                                         
+Name: matplotlib
+Version: 3.1.2
+
+$ pip3 show numpy                                                                                                                      
+Name: numpy
+Version: 1.17.4
+
+$ pip3 show chardet                                                                                                                     
+Name: chardet
+Version: 3.0.4</code></pre></div>
+<h1 id="データの収集-可視化">データの収集・可視化</h1>
+
+<p>とりあえず、自分の<a href="https://qiita.com/Seigenkousya/items/8f0ffbd2c34a8e8535e2">過去の記事</a>を見ながらプログラムを修正することに。<br />
+目を覆いたくなるような残念なコードですが耐えながら読みます。<br />
+前回から変えた部分は、</p>
+
+<ul>
+<li>同じことを何回も書いている部分があるのでオブジェクト化</li>
+<li>掲載順が下がっているのかセンターカラーの定位置なのかわからなかったのでセンターカラーのときは印をつけた</li>
+<li>今までfontタグを使って掲載順を判断していたが余計な文章が増えていたので<code>&lt;font color=&quot;8000FF&quot;&gt;</code>で囲われた部分だけを採用するようにした</li>
+</ul>
+
+<p>のだいたい3つです。<br />
+<del>ちょっとずつサイトが変わっているので変えなくちゃいけない（めんどくさい）</del></p>
+
+<p>使用したプログラムは以下。</p>
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-python3" data-lang="python3"><span style="color:#75715e">#-*-coding:utf-8 -*-</span>
+<span style="color:#f92672">import</span> re
+<span style="color:#f92672">import</span> regex
+<span style="color:#f92672">import</span> sys
+<span style="color:#f92672">import</span> requests
+<span style="color:#f92672">import</span> collections
+<span style="color:#f92672">from</span> bs4 <span style="color:#66d9ef">import</span> BeautifulSoup
+<span style="color:#f92672">from</span> time <span style="color:#66d9ef">import</span> sleep
+<span style="color:#f92672">import</span> numpy <span style="color:#66d9ef">as</span> np
+<span style="color:#f92672">import</span> matplotlib.pyplot <span style="color:#66d9ef">as</span> plt
+
+month_list<span style="color:#f92672">=</span>[<span style="color:#e6db74">&#39;Jan.&#39;</span>,<span style="color:#e6db74">&#39;Feb.&#39;</span>,<span style="color:#e6db74">&#39;Mar.&#39;</span>,<span style="color:#e6db74">&#39;Apr.&#39;</span>,<span style="color:#e6db74">&#39;May&#39;</span>,<span style="color:#e6db74">&#39;June&#39;</span>,<span style="color:#e6db74">&#39;July&#39;</span>,<span style="color:#e6db74">&#39;Aug.&#39;</span>,<span style="color:#e6db74">&#39;Sept.&#39;</span>,<span style="color:#e6db74">&#39;Oct.&#39;</span>,<span style="color:#e6db74">&#39;Nov.&#39;</span>,<span style="color:#e6db74">&#39;Dec.&#39;</span>];
+mid_list<span style="color:#f92672">=</span>[<span style="color:#e6db74">&#39;642&#39;</span>, <span style="color:#e6db74">&#39;646&#39;</span>, <span style="color:#e6db74">&#39;650&#39;</span>, <span style="color:#e6db74">&#39;654&#39;</span>, <span style="color:#e6db74">&#39;658&#39;</span>, <span style="color:#e6db74">&#39;662&#39;</span>, <span style="color:#e6db74">&#39;666&#39;</span>, <span style="color:#e6db74">&#39;670&#39;</span>, <span style="color:#e6db74">&#39;674&#39;</span>, <span style="color:#e6db74">&#39;678&#39;</span>, <span style="color:#e6db74">&#39;682&#39;</span>, <span style="color:#e6db74">&#39;686&#39;</span>, <span style="color:#e6db74">&#39;690&#39;</span>, <span style="color:#e6db74">&#39;694&#39;</span>, <span style="color:#e6db74">&#39;698&#39;</span>, <span style="color:#e6db74">&#39;702&#39;</span>]
+bottom<span style="color:#f92672">=</span><span style="color:#ae81ff">24</span>
+mid<span style="color:#f92672">=</span><span style="color:#ae81ff">187</span>
+year<span style="color:#f92672">=</span><span style="color:#ae81ff">2019</span>
+month<span style="color:#f92672">=</span><span style="color:#ae81ff">1</span>
+index<span style="color:#f92672">=</span><span style="color:#ae81ff">0</span>
+
+center_colors<span style="color:#f92672">=</span>[]
+center_color_all<span style="color:#f92672">=</span>[]
+count_cc<span style="color:#f92672">=</span>{}
+
+date_list<span style="color:#f92672">=</span>[]
+date_place<span style="color:#f92672">=</span>[]
+
+<span style="color:#66d9ef">class</span> <span style="color:#a6e22e">Article</span>:
+    <span style="color:#66d9ef">def</span> <span style="color:#a6e22e">__init__</span>(self,_label,_keyword):
+        self<span style="color:#f92672">.</span>label<span style="color:#f92672">=</span>_label
+        self<span style="color:#f92672">.</span>keyword<span style="color:#f92672">=</span>_keyword
+        self<span style="color:#f92672">.</span>list<span style="color:#f92672">=</span>[]
+        self<span style="color:#f92672">.</span>center_list<span style="color:#f92672">=</span>[]
+        self<span style="color:#f92672">.</span>mark_point<span style="color:#f92672">=</span>[]
+
+    <span style="color:#66d9ef">def</span> <span style="color:#a6e22e">is_centercolor</span>(self,center_colors):
+        flag<span style="color:#f92672">=</span><span style="color:#66d9ef">False</span>
+        <span style="color:#66d9ef">for</span> cc <span style="color:#f92672">in</span> center_colors:
+            <span style="color:#66d9ef">if</span> self<span style="color:#f92672">.</span>keyword <span style="color:#f92672">in</span> cc:
+                flag<span style="color:#f92672">=</span><span style="color:#66d9ef">True</span>
+                <span style="color:#66d9ef">break</span>
+        <span style="color:#66d9ef">if</span> flag:
+            self<span style="color:#f92672">.</span>mark_point<span style="color:#f92672">.</span>append(len(self<span style="color:#f92672">.</span>center_list))
+        
+        self<span style="color:#f92672">.</span>center_list<span style="color:#f92672">.</span>append(flag)
+
+Article_list<span style="color:#f92672">=</span>[  Article(<span style="color:#e6db74">&#34;bozaro&#34;</span>,<span style="color:#e6db74">&#34;ぼっち&#34;</span>),
+                Article(<span style="color:#e6db74">&#34;syachiku&#34;</span>,<span style="color:#e6db74">&#34;社畜さん&#34;</span>),
+                Article(<span style="color:#e6db74">&#34;umirie&#34;</span>,<span style="color:#e6db74">&#34;旅する海と&#34;</span>),
+                Article(<span style="color:#e6db74">&#34;kinmoza&#34;</span>,<span style="color:#e6db74">&#34;きんいろ&#34;</span>),
+                Article(<span style="color:#e6db74">&#34;gochiusa&#34;</span>,<span style="color:#e6db74">&#34;ご注文は&#34;</span>),
+                Article(<span style="color:#e6db74">&#34;comic_girls&#34;</span>,<span style="color:#e6db74">&#34;こみっくが&#34;</span>),
+                Article(<span style="color:#e6db74">&#34;stella&#34;</span>,<span style="color:#e6db74">&#34;ステラのまほう&#34;</span>)]
+                
+<span style="color:#66d9ef">while</span> index <span style="color:#f92672">&lt;</span> len(mid_list):
+
+    print (<span style="color:#e6db74">&#34;</span><span style="color:#ae81ff">\n</span><span style="color:#e6db74">{}</span><span style="color:#e6db74">年</span><span style="color:#e6db74">{}</span><span style="color:#e6db74">月号&#34;</span><span style="color:#f92672">.</span>format(year,month))
+    
+    date_list<span style="color:#f92672">.</span>append(str(year)<span style="color:#f92672">+</span><span style="color:#e6db74">&#34;</span><span style="color:#ae81ff">\n</span><span style="color:#e6db74">&#34;</span><span style="color:#f92672">+</span>month_list[month<span style="color:#f92672">-</span><span style="color:#ae81ff">1</span>]);
+    date_place<span style="color:#f92672">.</span>append(index)
+
+    url<span style="color:#f92672">=</span><span style="color:#e6db74">&#39;http://www.dokidokivisual.com/magazine/max/book/index.php?mid=</span><span style="color:#e6db74">{0}</span><span style="color:#e6db74">&#39;</span><span style="color:#f92672">.</span>format(mid_list[index])
+    html<span style="color:#f92672">=</span>requests<span style="color:#f92672">.</span>get(url)
+
+    source<span style="color:#f92672">=</span>BeautifulSoup(html<span style="color:#f92672">.</span>content,<span style="color:#e6db74">&#34;html.parser&#34;</span>)
+    strongs<span style="color:#f92672">=</span>source<span style="color:#f92672">.</span>find_all(<span style="color:#e6db74">&#34;strong&#34;</span>)
+
+    center_colors<span style="color:#f92672">=</span>[]
+    <span style="color:#66d9ef">for</span> i <span style="color:#f92672">in</span> range(<span style="color:#ae81ff">0</span>,len(strongs),<span style="color:#ae81ff">2</span>):
+        _result<span style="color:#f92672">=</span>re<span style="color:#f92672">.</span>search(<span style="color:#e6db74">&#39;センターカラー|巻頭カラー&#39;</span>,strongs[i]<span style="color:#f92672">.</span>text)
+        <span style="color:#66d9ef">if</span> _result<span style="color:#f92672">!=</span> <span style="color:#66d9ef">None</span>:
+            center_colors<span style="color:#f92672">.</span>append(re<span style="color:#f92672">.</span>search(<span style="color:#e6db74">&#39;『.+』&#39;</span>,strongs[i<span style="color:#f92672">+</span><span style="color:#ae81ff">1</span>]<span style="color:#f92672">.</span>text)<span style="color:#f92672">.</span>group())
+            center_color_all<span style="color:#f92672">.</span>append(center_colors[<span style="color:#f92672">-</span><span style="color:#ae81ff">1</span>])
+
+    print(center_colors)
+    
+    span<span style="color:#f92672">=</span>source<span style="color:#f92672">.</span>find_all(<span style="color:#e6db74">&#34;font&#34;</span>,color<span style="color:#f92672">=</span><span style="color:#e6db74">&#34;#8000FF&#34;</span>)
+
+    i<span style="color:#f92672">=</span><span style="color:#ae81ff">0</span>
+    <span style="color:#66d9ef">for</span> tag <span style="color:#f92672">in</span> span:
+        <span style="color:#66d9ef">try</span>:
+            i<span style="color:#f92672">+=</span><span style="color:#ae81ff">1</span>
+            name<span style="color:#f92672">=</span>tag<span style="color:#f92672">.</span>string
+            
+            print(i,name)
+
+            <span style="color:#66d9ef">for</span> art <span style="color:#f92672">in</span> Article_list:
+                <span style="color:#66d9ef">if</span> art<span style="color:#f92672">.</span>keyword <span style="color:#f92672">in</span> name <span style="color:#f92672">and</span> len(art<span style="color:#f92672">.</span>list)<span style="color:#f92672">==</span>index:
+                    art<span style="color:#f92672">.</span>list<span style="color:#f92672">.</span>append(i)
+                    art<span style="color:#f92672">.</span>is_centercolor(center_colors)
+        <span style="color:#66d9ef">except</span>:
+            <span style="color:#66d9ef">pass</span> 
+
+    <span style="color:#66d9ef">for</span> art <span style="color:#f92672">in</span> Article_list:
+        <span style="color:#66d9ef">if</span> len(art<span style="color:#f92672">.</span>list)<span style="color:#f92672">==</span>index:
+            art<span style="color:#f92672">.</span>list<span style="color:#f92672">.</span>append(<span style="color:#66d9ef">None</span>)
+
+    index<span style="color:#f92672">+=</span><span style="color:#ae81ff">1</span>
+
+    <span style="color:#66d9ef">if</span> month<span style="color:#f92672">==</span><span style="color:#ae81ff">12</span>:
+        year<span style="color:#f92672">+=</span><span style="color:#ae81ff">1</span>
+        month<span style="color:#f92672">=</span><span style="color:#ae81ff">1</span>
+    <span style="color:#66d9ef">else</span>:
+        month<span style="color:#f92672">+=</span><span style="color:#ae81ff">1</span>
+
+    sleep(<span style="color:#ae81ff">1</span>)
+
+print(collections<span style="color:#f92672">.</span>Counter(center_color_all))
+
+<span style="color:#66d9ef">for</span> art <span style="color:#f92672">in</span> Article_list:
+    print(art<span style="color:#f92672">.</span>center_list)
+    print(art<span style="color:#f92672">.</span>mark_point)
+
+X_list<span style="color:#f92672">=</span>list(range(len(mid_list)))
+plt<span style="color:#f92672">.</span>xlabel(<span style="color:#e6db74">&#39;Publication issue&#39;</span>)
+plt<span style="color:#f92672">.</span>ylabel(<span style="color:#e6db74">&#39;Publication order&#39;</span>)
+plt<span style="color:#f92672">.</span>title(<span style="color:#e6db74">&#39;Changes in the order of publication&#39;</span>)
+
+<span style="color:#66d9ef">for</span> art <span style="color:#f92672">in</span> Article_list:
+    plt<span style="color:#f92672">.</span>plot(X_list, art<span style="color:#f92672">.</span>list, <span style="color:#e6db74">&#39;.&#39;</span>, linestyle<span style="color:#f92672">=</span><span style="color:#e6db74">&#39;solid&#39;</span>, marker<span style="color:#f92672">=</span><span style="color:#e6db74">&#34;D&#34;</span>, markevery<span style="color:#f92672">=</span>art<span style="color:#f92672">.</span>mark_point ,label<span style="color:#f92672">=</span>art<span style="color:#f92672">.</span>label)
+
+plt<span style="color:#f92672">.</span>gca()<span style="color:#f92672">.</span>invert_yaxis()
+plt<span style="color:#f92672">.</span>grid(color<span style="color:#f92672">=</span><span style="color:#e6db74">&#39;gray&#39;</span>)
+plt<span style="color:#f92672">.</span>legend(bbox_to_anchor<span style="color:#f92672">=</span>(<span style="color:#ae81ff">1.02</span>,<span style="color:#ae81ff">1</span>),loc<span style="color:#f92672">=</span><span style="color:#e6db74">&#39;upper left&#39;</span>,borderaxespad<span style="color:#f92672">=</span><span style="color:#ae81ff">0</span>)
+plt<span style="color:#f92672">.</span>subplots_adjust(right<span style="color:#f92672">=</span><span style="color:#ae81ff">0.7</span>)
+plt<span style="color:#f92672">.</span>xticks(date_place,date_list)
+plt<span style="color:#f92672">.</span>yticks(range(<span style="color:#ae81ff">1</span>,bottom))
+plt<span style="color:#f92672">.</span>show()</code></pre></div>
+<p>こんな感じ。<br />
+前回に比べてだいぶコードがスッキリしました。<br />
+任意のところにだけプロットするのが大変だった。（小並感）<br />
+ちなみにスクレイピングするときにURLが必要で<a href="http://www.dokidokivisual.com/magazine/max/book/index.php?mid=654">http://www.dokidokivisual.com/magazine/max/book/index.php?mid=654</a>のように<br />
+midなるものが必要なのだがこれは予め取得して配列に格納することにしてる。<br />
+いちいち取りに行くのは無駄だし、サーバに負荷がかかるのでよろしくない。<br />
+midを取りに行くコードはこちら。</p>
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-python3" data-lang="python3"><span style="color:#75715e">#-*-coding:utf-8 -*-</span>
+<span style="color:#f92672">import</span> sys
+<span style="color:#f92672">import</span> requests
+<span style="color:#f92672">import</span> re
+<span style="color:#f92672">from</span> bs4 <span style="color:#66d9ef">import</span> BeautifulSoup
+<span style="color:#f92672">from</span> time <span style="color:#66d9ef">import</span> sleep
+
+year<span style="color:#f92672">=</span><span style="color:#ae81ff">2019</span>
+mid_list<span style="color:#f92672">=</span>[]
+
+<span style="color:#66d9ef">while</span> year<span style="color:#f92672">&lt;=</span><span style="color:#ae81ff">2020</span>:
+
+    print (<span style="color:#e6db74">&#34;</span><span style="color:#ae81ff">\n</span><span style="color:#e6db74">{}</span><span style="color:#e6db74">年&#34;</span><span style="color:#f92672">.</span>format(year))
+
+    url<span style="color:#f92672">=</span><span style="color:#e6db74">&#39;http://www.dokidokivisual.com/magazine/max/backnumber/index.php?y=</span><span style="color:#e6db74">{0}</span><span style="color:#e6db74">&#39;</span><span style="color:#f92672">.</span>format(year)
+    html<span style="color:#f92672">=</span>requests<span style="color:#f92672">.</span>get(url)
+
+    source<span style="color:#f92672">=</span>BeautifulSoup(html<span style="color:#f92672">.</span>content,<span style="color:#e6db74">&#34;html.parser&#34;</span>)
+    a<span style="color:#f92672">=</span>source<span style="color:#f92672">.</span>find_all(<span style="color:#e6db74">&#34;a&#34;</span>)
+
+    i<span style="color:#f92672">=</span><span style="color:#ae81ff">0</span>
+    <span style="color:#66d9ef">for</span> tag <span style="color:#f92672">in</span> a:
+        <span style="color:#66d9ef">try</span>:
+            <span style="color:#66d9ef">if</span> <span style="color:#e6db74">&#34;mid&#34;</span> <span style="color:#f92672">in</span> tag[<span style="color:#e6db74">&#39;href&#39;</span>]:
+                print(tag[<span style="color:#e6db74">&#39;href&#39;</span>])
+                print(re<span style="color:#f92672">.</span>search(<span style="color:#e6db74">&#34;\d*$&#34;</span>,tag[<span style="color:#e6db74">&#39;href&#39;</span>])<span style="color:#f92672">.</span>group(<span style="color:#ae81ff">0</span>))
+                mid_list<span style="color:#f92672">.</span>append(re<span style="color:#f92672">.</span>search(<span style="color:#e6db74">&#34;\d*$&#34;</span>,tag[<span style="color:#e6db74">&#39;href&#39;</span>])<span style="color:#f92672">.</span>group(<span style="color:#ae81ff">0</span>))
+        <span style="color:#66d9ef">except</span>:
+            <span style="color:#66d9ef">pass</span> 
+
+    year<span style="color:#f92672">+=</span><span style="color:#ae81ff">1</span>
+    mid_list<span style="color:#f92672">=</span>list(set(mid_list))
+
+    sleep(<span style="color:#ae81ff">1</span>)
+
+mid_list<span style="color:#f92672">.</span>sort()
+print(mid_list)</code></pre></div>
+<p>一応、githubにも上げておく。<br />
+<div class="iframely-embed"><div class="iframely-responsive" style="height: 140px; width:600px; padding-bottom: 0;"><a href="https://github.com/Seigenkousya/kirara_scraper" data-iframely-url="//cdn.iframe.ly/api/iframe?url=https%3A%2F%2Fgithub.com%2FSeigenkousya%2Fkirara_scraper&key=dd60c159c87f40f1ecca839b51b281e8"></a></div></div></p>
+
+<h1 id="結果">結果</h1>
+
+<p>上記のプログラムを実行した結果がこちら。
+<img src="/images/max_2020_mod.png" alt="max_2020" />
+縦軸は掲載順、横軸は月です。<br />
+ダイヤモンドがついているところはカラーページのときです。<br />
+カラーページのときは掲載位置が固定されるのでこのような形になります。<br />
+ちなみに選出した作品は僕の趣味で選出しました。<br />
+全部のデータを取得しているので全部表示してもいいんですが、読み切りも入っちゃうし何よりごちゃごちゃになっちゃうのでやめました。</p>
+
+<p>せっかくセンターカラー数の取得もできたので出力してみました。</p>
+
+<blockquote>
+<p>Counter({
+ &lsquo;『ご注文はうさぎですか？』&rsquo;: 16,<br />
+ &lsquo;『社畜さんと家出少女』&rsquo;: 5,<br />
+ &lsquo;『きんいろモザイク』&rsquo;: 5,<br />
+ &lsquo;『こみっくがーるず』&rsquo;: 4,<br />
+ &lsquo;『ステラのまほう』&rsquo;: 4,<br />
+ &lsquo;『エンとゆかり』&rsquo;: 4,<br />
+ &lsquo;『ななどなどなど』&rsquo;: 4,<br />
+ &lsquo;『旅する海とアトリエ』&rsquo;: 3,<br />
+ &lsquo;『しょうこセンセイ！』&rsquo;: 3,<br />
+ &lsquo;『いのち短し善せよ乙女』&rsquo;: 3,<br />
+ &lsquo;『魔王城ツアーへようこそ！』&rsquo;: 2,<br />
+ &lsquo;『ぼっち・ざ・ろっく！』&rsquo;: 2,<br />
+ &lsquo;『委員長のノゾミ』&rsquo;: 2,<br />
+ &lsquo;『私を球場に連れてって！』&rsquo;: 2,<br />
+ &lsquo;『みわくの魔かぞく』&rsquo;: 2,<br />
+ &lsquo;『ハルメタルドールズ』&rsquo;: 2,<br />
+ &lsquo;『六条さんのアトリビュート』&rsquo;: 2,<br />
+ &lsquo;『初恋＊れ〜るとりっぷ』&rsquo;: 2,<br />
+ &lsquo;『ホレンテ島の魔法使い』&rsquo;: 2,<br />
+ &lsquo;『ももいろジャンキー』&rsquo;: 1,<br />
+ &lsquo;『タベモノガタリ』&rsquo;: 1,<br />
+ &lsquo;『たつのお年頃』&rsquo;: 1,<br />
+ &lsquo;『魔王と勇者が百合結婚するお話。』&rsquo;: 1,<br />
+ &lsquo;『ハルメタルドールズ！』&rsquo;: 1,<br />
+ &lsquo;『初恋＊れ～るとりっぷ』&rsquo;: 1,<br />
+ &lsquo;『吸血鬼さんと行く∞日の終末旅行』&rsquo;: 1,<br />
+ &lsquo;『ほーぷす×ハウス』&rsquo;: 1,<br />
+ &lsquo;『月が綺麗だから盗んで』&rsquo;: 1,<br />
+ &lsquo;『ぬるめた』&rsquo;: 1,<br />
+ &lsquo;『ぼっち・ざ・ろっく!』&rsquo;: 1})</p>
+</blockquote>
+
+<p>一見いい感じなんですがサイトでの表記にブレがあるので正確じゃありません&hellip;<br />
+例えば『ぼっち・ざ・ろっく！』と『ぼっち・ざ・ろっく!』という風に全角の！と半角の!が混在していて上手く判定できず、本来3回なのに2つに別れてしまってします。<br />
+ここは改善点です。<br />
+現実的な対策は表記ゆれしそうな記号をすべて排除してから評価するとかですかね&hellip;</p>
+
+<h1 id="考察">考察</h1>
+
+<p>この結果を見て驚くべきはごちうさの驚異のセンターカラー率。<br />
+なんと100%！こんなんじゃkoi先生が過労死してしまう&hellip;<br />
+そしてさらに驚いたのが社畜さんと家出少女が5回（2位）という記録。きんモザと並びます。<br />
+これは表紙ゲットにもうなずけますね&hellip;</p>
+
+<p>あと、新しい作品ってイメージがあった作品がもう長いことやっていてびっくりしました。<br />
+僕の中ではぼざろはかなり新しいイメージだったのですがもう2巻出ているわけですから2年以上やっているわけですよ。<br />
+時の流れは残酷です。</p>
+
+<p>データ面で言えば、センターカラーの位置も微妙に変動してますね。<br />
+1年とかで変わるかなとか思ってたけど意外と短いスパンで変わってますね&hellip;<br />
+多少センターカラーを取得できなくても掲載順から逆算できるでしょ（慢心）とか思ってたけど厳しいかもな&hellip;<br />
+海リエのセンターカラーに関係なくV字回復している部分（ぼざろにもある）は多分ページ増量に伴って最後に回されるやつかと思われます。（それか2本掲載）</p>
+
+<h1 id="感想">感想</h1>
+
+<p>実はこれ、もう一度きららの掲載順の記事を書きたかったのもあるんですけど、きららのデータを集めたサイトを作ろうと考えていてそれの準備運動として作ったんですよね。<br />
+都合よくバックナンバーのページにデータはあるので色々データを集めて可視化できるようなサイトをこのブログ内に構築しようかなと。<br />
+今回の記事でいい感じにスクレイピングのコツとかは思い出せたのでこれから暇を見つけて構築いていきたいなと思います。<br />
+あと、今回のプログラムを流用してキャラット版のデータも準備運動2として作ろう。</p>
+
+    </div>
+    <div class="post-footer">
+      
+    </div>
+  </article>
+
+    </main>
+  </body>
+</html>
