@@ -1,0 +1,118 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes"?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>技術活動 on 正弦工社</title>
+    <link>https://Seigenkousya.github.io/tags/%E6%8A%80%E8%A1%93%E6%B4%BB%E5%8B%95/</link>
+    <description>Recent content in 技術活動 on 正弦工社</description>
+    <generator>Hugo -- gohugo.io</generator>
+    <language>ja</language>
+    <lastBuildDate>Mon, 16 Mar 2020 19:40:40 +0900</lastBuildDate>
+    
+	<atom:link href="https://Seigenkousya.github.io/tags/%E6%8A%80%E8%A1%93%E6%B4%BB%E5%8B%95/index.xml" rel="self" type="application/rss+xml" />
+    
+    
+    <item>
+      <title>まんがタイムきららキャラットの掲載順を可視化・分析する2020</title>
+      <link>https://Seigenkousya.github.io/post/carat_order_2020/</link>
+      <pubDate>Mon, 16 Mar 2020 19:40:40 +0900</pubDate>
+      
+      <guid>https://Seigenkousya.github.io/post/carat_order_2020/</guid>
+      <description>↑今回の成果
+はじめに この記事はおととい書いた「まんがタイムきららMAXの掲載順を可視化・分析する2020」の続きです。
+前回僕はこんなことを言いました。
+ あと、今回のプログラムを流用してキャラット版のデータも準備運動2として作ろう。
+ 見通しが甘かった&amp;hellip;
+MAXのやつが意外と綺麗に書けたので浮かれていましたが、キャラットのデータ取得は地獄でした&amp;hellip;
+特に地獄だったのは、
+ MAXは&amp;lt;font color=&amp;quot;8000FF&amp;quot;&amp;gt;という非常に都合の良いタグに囲まれていたのでデータの取得がすっごい楽だったのですが、 キャラットは汎用的な&amp;lt;li&amp;gt;で囲われていてデータの特定が難しいものになってました。（絶望） MAXのページとキャラットのページを見比べてみてください。 今月の見どころの構成が全く違います。なんて恐ろしいのでしょう。センターカラーを取得するところは書き直しになりました。 2020年3月号と2020年4月号を 見比べてみてください。3月号は表紙と巻頭カラーの作品が違いますが、4月号は同じ作品が担当しています。つまり項目の数が違うのです&amp;hellip;  の3つです。
+まぁつまりどういうことかと言うと書いたプログラムを書き換えるだけで取得できるでしょ（慢心）と思っていたら大幅な書き換えが必要な上、地獄のような取得方法が待ち受けていたってやつです。
+大変だった&amp;hellip;（満身創痍）
+使用したプログラム リポジトリはここ。
+
+とりあえず使用したプログラムを示します。（プログラムに興味ない人は読み飛ばして結果と考察に飛んでください）
+#-*-coding:utf-8 -*- import re import regex import sys import requests import collections from bs4 import BeautifulSoup from time import sleep import numpy as np import matplotlib.pyplot as plt #input get_mid.py result here. mid_list=[&amp;#39;644&amp;#39;, &amp;#39;648&amp;#39;, &amp;#39;652&amp;#39;, &amp;#39;656&amp;#39;, &amp;#39;660&amp;#39;, &amp;#39;664&amp;#39;, &amp;#39;668&amp;#39;, &amp;#39;672&amp;#39;, &amp;#39;676&amp;#39;, &amp;#39;680&amp;#39;, &amp;#39;684&amp;#39;, &amp;#39;688&amp;#39;, &amp;#39;692&amp;#39;, &amp;#39;696&amp;#39;, &amp;#39;700&amp;#39;, &amp;#39;704&amp;#39;] month_list=[&amp;#39;Jan.</description>
+    </item>
+    
+    <item>
+      <title>まんがタイムきららMAXの掲載順を可視化・分析する2020</title>
+      <link>https://Seigenkousya.github.io/post/kirara_order_2020/</link>
+      <pubDate>Sat, 14 Mar 2020 13:37:56 +0900</pubDate>
+      
+      <guid>https://Seigenkousya.github.io/post/kirara_order_2020/</guid>
+      <description>↑今回の成果
+はじめに この記事は過去に書いたどうびじゅの連載終了が告知され心と胃を痛めているきららmax読者のためのスクレイピングを使ったデータ収集と考察のススメ - Qiitaのリバイバル版です。
+ もうこの記事から1年経っているので新しくデータを集めて可視化しようかなと。
+毎年一回はやりたいなこれ。（気に入ってる）
+キャラット版は[こちら]()（まだ作ってない）
+データの収集 なんと書いた本人がやり方を全く覚えていません。
+結局自分が書いた記事を読む羽目に。（技術者あるある）
+解説は上の記事でやったのでやりません。（無情）　と思ったけど書き直したのでやっぱちょっとやる。
+この記事を見てやってみたいって思った人がいたら、やり方とか注意事項とか書いてあるので最初に貼ったリンクを読んでね。
+環境 実行環境はこちら。
+$ uname -a Linux kali 4.18.0-kali2-amd64 #1 SMP Debian 4.18.10-2kali1 (2018-10-09) x86_64 GNU/Linux $ python3 --version Python 3.7.6 $ pip3 show requests Name: requests Version: 2.22.0 $ pip3 show beautifulsoup4 Name: beautifulsoup4 Version: 4.8.2 $ pip3 show matplotlib Name: matplotlib Version: 3.1.2 $ pip3 show numpy Name: numpy Version: 1.17.4 $ pip3 show chardet Name: chardet Version: 3.</description>
+    </item>
+    
+    <item>
+      <title>桃音ちゃんのAAの形をした桃音ちゃんのAAの形をした桃音ちゃんのAAの形をした...桃音ちゃんのAAを出力するプログラム</title>
+      <link>https://Seigenkousya.github.io/post/momone_aa/</link>
+      <pubDate>Sat, 21 Dec 2019 23:40:35 +0900</pubDate>
+      
+      <guid>https://Seigenkousya.github.io/post/momone_aa/</guid>
+      <description>この記事は「まんがタイムきらら Advent Calendar 2019」の23日目の記事にして13日目のオマケ記事です。
+プログラムの見た目自体は変わってないので伝わり辛いでしょうがお付き合いください。
+前回のあらすじ 精神を病んで桃音ちゃん型のプログラムを書いた。
+しかし、プログラムの内容はFizzBuzzという相崎先生に申し訳ないレベルの簡単なプログラム。
+もっと、見た人がおぉってなるようなプログラムにしたい。（あと、しょうもないコメントを使った手法から脱却したい）
+今回のあらすじ 出力自体も桃音ちゃんだったらめっちゃエモく無いですか？（唐突な思いつき）
+いっそのこと自己参照型のプログラムにしたら良さそう（これをQuine1と言います）。
+そんなこんな今回も気合で書いていきます。
+環境 前回に引き続きPerlで。
+$ uname -a Linux kali 4.18.0-kali2-amd64 #1 SMP Debian 4.18.10-2kali1 (2018-10-09) x86_64 GNU/Linux $ perl --version This is perl 5, version 28, subversion 1 (v5.28.1) built for x86_64-linux-gnu-thread-multi Quineとは？ wikiの説明を借りると、
+ クワイン（英: Quine）は、コンピュータプログラムの一種で、自身のソースコードと完全に同じ文字列を出力するプログラムである。
+ 要はプログラムと出力がまったく等しいプログラムのことです。
+perlでいうとこう。
+$_=q{print&amp;#34;\$_=q{$_};eval&amp;#34;};eval 実際に確かめてみると、
+$ perl -E &amp;#39;$_=q{print&amp;#34;\$_=q{$_};eval&amp;#34;};eval&amp;#39; $_=q{print&amp;#34;\$_=q{$_};eval&amp;#34;};eval たしかに入力と出力が一致する。
+これは、
+ 暗黙変数$_にq{print&amp;quot;\$\_=q{$_};eval&amp;quot;}を代入する evalが実行される evalは暗黙的に$_を参照するのでq{print&amp;quot;\$_=q{$_};eval&amp;quot;}がevalに渡される q演算子q//より、文字列print&amp;quot;\$_=q{$_};eval&amp;quot;が渡されることになる evalに渡されるprint&amp;quot;\$_=q{$_};eval&amp;quot;のうち、エスケープされていないq{$_}の部分の$_は最初に代入したq{print&amp;quot;\$\_=q{$_};eval&amp;quot;}になるので 標準出力に$_=q{print&amp;quot;\$_=q{$_};eval&amp;quot;};evalが出力される  という流れで実行されるからです。</description>
+    </item>
+    
+    <item>
+      <title>世界一かわいいプログラムを書こう</title>
+      <link>https://Seigenkousya.github.io/post/momone_fizzbuzz/</link>
+      <pubDate>Fri, 06 Dec 2019 23:07:49 +0900</pubDate>
+      
+      <guid>https://Seigenkousya.github.io/post/momone_fizzbuzz/</guid>
+      <description>この記事は「まんがタイムきらら Advent Calendar 2019」の13日目の記事です。
+注意 この記事の元となるプログラムは今年の2月のMAXの発売日の直後という僕史上最もメンタルがイカれていた時期に書かれたものです。
+狂気的な内容ではございますがお付き合いください。
+はじめに みなさんプログラム書きます？
+まぁ書いたこと無い人もいれば自作言語をガンガン開発している人もいるでしょう（多分）
+プログラムっていうのはこんな奴です。（ねねっちが3Tab派の変態プログラマーって本当何ですか？）
+プログラムには美しいプログラムとそうでないプログラムがあります。
+美しいプログラムというのは要は誰が見ても内容を理解しやすく見やすいプログラムです。これが書ける人はちやほやされます。
+逆に読みづらいプログラムは内容が理解しづらかったり、後で修正するのが面倒だったりもうそれは大変です。
+あるとき僕は考えました。この世に美しいプログラムやカッコいいプログラムがあっても、見ていて癒されるかわいいプログラムは無いなぁと。
+プログラムを書いているときに思うように動かなければ心が荒みます。
+しかし、そのプログラム自体が美少女だったらどうでしょう。自然と笑顔を取り戻すことができるはずです。
+そして、当時の僕にはもう一つこのかわいいプログラムを書かねばならない理由がありました。
+それがこちらです。
+【おしらせ】本日2月19日発売のまんがタイムきららMAXに「どうして私が美術科に!?」38話目載せてもらっています。
+そして次号、最終話です。 pic.twitter.com/Ars5radT6o
+&amp;mdash; 相崎うたう@きららMAXゲスト (@py_py_ai) February 19, 2019  僕のQiitaの記事を読んだことのある人ならお分かりでしょうが、僕はこの出来事に大きなショックを受け1月半以上家に引きこもっていました。
+不眠と嘔吐に耐えながら僕はプログラムに打ち込むことで気を紛らわせていました。
+当時の僕には癒されるプログラムが、心の支えが必要だったのです。
+そんなこんなで非常に不純な理由で僕はこのプログラムを書き始めたのです。1
+用意するもの  かわいいsomething 技術力 精神力 半ば狂気ともいえる執念  世界一かわいいプログラムを書くには世界一かわいい美少女が必要です。
+僕にとっては「どうして私が美術科に！？」2の酒井桃音ちゃんだったので（ももきなをすこれ）桃音ちゃんの力を借りてプログラムを書こうと思います。
+モデルにするイラストは以下。
+【おしらせ】11月19日発売のまんがタイムきららMAXに「どうして私が美術科に!?」11話目載せてもらっています。初めての合同制作、ということでグループ名からどんな作品を作るのかまで悩みっぱなしな回です。そしてセンターカラーを頂いた来月号にお話は続きます。よろしくお願いします！ pic.twitter.com/4GxWCpKfDh
+&amp;mdash; 相崎うたう@きららMAXゲスト (@py_py_ai) November 19, 2016  か゛わ゛い゛い゛な゛ぁ゛桃゛音゛ち゛ゃ゛ん゛
+ちなみにこの号の予告絵（桃音）と次号の予告絵（黄奈子）がつながっていてヤバみがヤバい（僕はこれで1000回死んだ）
+どうびじゅについて語ると世界中のリソースを使い尽くしても語りきれないので省略しますが、賢明な読者諸氏なら既にご存知でしょう。
+環境 一応技術記事らしく。
+$ uname -a Linux kali 4.18.0-kali2-amd64 #1 SMP Debian 4.18.10-2kali1 (2018-10-09) x86_64 GNU/Linux $ perl --version This is perl 5, version 28, subversion 1 (v5.</description>
+    </item>
+    
+  </channel>
+</rss>
