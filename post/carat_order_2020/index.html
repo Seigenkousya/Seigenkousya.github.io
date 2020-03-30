@@ -32,7 +32,7 @@
 
 
 <meta charset="utf-8" />
-    <meta name="generator" content="Hugo 0.59.1" />
+    <meta name="generator" content="Hugo 0.67.0" />
     <meta name="viewport" content="width=device-width, initial-scale=1" />
     <meta name="author" content="Takana Norimasa" />
     <meta name="description" content="" />
@@ -65,8 +65,7 @@ MAXのやつが意外と綺麗に書けたので浮かれていましたが、�
 まぁつまりどういうことかと言うと書いたプログラムを書き換えるだけで取得できるでしょ（慢心）と思っていたら大幅な書き換えが必要な上、地獄のような取得方法が待ち受けていたってやつです。
 大変だった&hellip;（満身創痍）
 使用したプログラム リポジトリはここ。
-
-とりあえず使用したプログラムを示します。（プログラムに興味ない人は読み飛ばして結果と考察に飛んでください）
+ とりあえず使用したプログラムを示します。（プログラムに興味ない人は読み飛ばして結果と考察に飛んでください）
 #-*-coding:utf-8 -*- import re import regex import sys import requests import collections from bs4 import BeautifulSoup from time import sleep import numpy as np import matplotlib.pyplot as plt #input get_mid.py result here. mid_list=[&#39;644&#39;, &#39;648&#39;, &#39;652&#39;, &#39;656&#39;, &#39;660&#39;, &#39;664&#39;, &#39;668&#39;, &#39;672&#39;, &#39;676&#39;, &#39;680&#39;, &#39;684&#39;, &#39;688&#39;, &#39;692&#39;, &#39;696&#39;, &#39;700&#39;, &#39;704&#39;] month_list=[&#39;Jan."/>
 
     <meta property="og:title" content="まんがタイムきららキャラットの掲載順を可視化・分析する2020" />
@@ -81,8 +80,7 @@ MAXのやつが意外と綺麗に書けたので浮かれていましたが、�
 まぁつまりどういうことかと言うと書いたプログラムを書き換えるだけで取得できるでしょ（慢心）と思っていたら大幅な書き換えが必要な上、地獄のような取得方法が待ち受けていたってやつです。
 大変だった&hellip;（満身創痍）
 使用したプログラム リポジトリはここ。
-
-とりあえず使用したプログラムを示します。（プログラムに興味ない人は読み飛ばして結果と考察に飛んでください）
+ とりあえず使用したプログラムを示します。（プログラムに興味ない人は読み飛ばして結果と考察に飛んでください）
 #-*-coding:utf-8 -*- import re import regex import sys import requests import collections from bs4 import BeautifulSoup from time import sleep import numpy as np import matplotlib.pyplot as plt #input get_mid.py result here. mid_list=[&#39;644&#39;, &#39;648&#39;, &#39;652&#39;, &#39;656&#39;, &#39;660&#39;, &#39;664&#39;, &#39;668&#39;, &#39;672&#39;, &#39;676&#39;, &#39;680&#39;, &#39;684&#39;, &#39;688&#39;, &#39;692&#39;, &#39;696&#39;, &#39;700&#39;, &#39;704&#39;] month_list=[&#39;Jan." />
 <meta property="og:type" content="article" />
 <meta property="og:url" content="https://Seigenkousya.github.io/post/carat_order_2020/" />
@@ -148,25 +146,17 @@ MAXのやつが意外と綺麗に書けたので浮かれていましたが、�
           <a class="tag" href="https://Seigenkousya.github.io/tags/%E6%8A%80%E8%A1%93%E6%B4%BB%E5%8B%95/">技術活動</a><a class="tag" href="https://Seigenkousya.github.io/tags/%E3%81%BE%E3%82%93%E3%81%8C%E3%82%BF%E3%82%A4%E3%83%A0%E3%81%8D%E3%82%89%E3%82%89%E3%82%AD%E3%83%A3%E3%83%A9%E3%83%83%E3%83%88/">まんがタイムきららキャラット</a></div></div>
     </header>
     <div class="post-content">
-      
-
-<p><img src="/images/carat_2020_mod.png" alt="carat_result" />
+      <p><img src="/images/carat_2020_mod.png" alt="carat_result">
 ↑今回の成果</p>
-
 <h1 id="はじめに">はじめに</h1>
-
-<p>この記事はおととい書いた<a href="https://seigenkousya.github.io/post/kirara_order_2020/">「まんがタイムきららMAXの掲載順を可視化・分析する2020」</a>の続きです。<br />
+<p>この記事はおととい書いた<a href="https://seigenkousya.github.io/post/kirara_order_2020/">「まんがタイムきららMAXの掲載順を可視化・分析する2020」</a>の続きです。<br>
 前回僕はこんなことを言いました。</p>
-
 <blockquote>
 <p>あと、今回のプログラムを流用してキャラット版のデータも準備運動2として作ろう。</p>
 </blockquote>
-
-<p>見通しが甘かった&hellip;<br />
+<p>見通しが甘かった&hellip;<br>
 MAXのやつが意外と綺麗に書けたので浮かれていましたが、キャラットのデータ取得は地獄でした&hellip;</p>
-
 <p>特に地獄だったのは、</p>
-
 <ul>
 <li>MAXは<code>&lt;font color=&quot;8000FF&quot;&gt;</code>という非常に都合の良いタグに囲まれていたのでデータの取得がすっごい楽だったのですが、
 キャラットは汎用的な<code>&lt;li&gt;</code>で囲われていてデータの特定が難しいものになってました。（絶望）</li>
@@ -175,17 +165,12 @@ MAXのやつが意外と綺麗に書けたので浮かれていましたが、�
 <li><a href="http://www.dokidokivisual.com/magazine/carat/book/index.php?mid=700">2020年3月号</a>と<a href="http://www.dokidokivisual.com/magazine/carat/book/index.php?mid=704">2020年4月号</a>を
 見比べてみてください。3月号は表紙と巻頭カラーの作品が違いますが、4月号は同じ作品が担当しています。つまり項目の数が違うのです&hellip;</li>
 </ul>
-
-<p>の3つです。<br />
-まぁつまりどういうことかと言うと書いたプログラムを書き換えるだけで取得できるでしょ（慢心）と思っていたら大幅な書き換えが必要な上、地獄のような取得方法が待ち受けていたってやつです。<br />
+<p>の3つです。<br>
+まぁつまりどういうことかと言うと書いたプログラムを書き換えるだけで取得できるでしょ（慢心）と思っていたら大幅な書き換えが必要な上、地獄のような取得方法が待ち受けていたってやつです。<br>
 大変だった&hellip;（満身創痍）</p>
-
 <h1 id="使用したプログラム">使用したプログラム</h1>
-
 <p>リポジトリはここ。</p>
-
-<p><div class="iframely-embed"><div class="iframely-responsive" style="height: 140px; width:600px; padding-bottom: 0;"><a href="https://github.com/Seigenkousya/kirara_scraper" data-iframely-url="//cdn.iframe.ly/api/iframe?url=https%3A%2F%2Fgithub.com%2FSeigenkousya%2Fkirara_scraper&key=dd60c159c87f40f1ecca839b51b281e8"></a></div></div><script async src="https://cdn.iframe.ly/embed.js" charset="utf-8"></script></p>
-
+<div class="iframely-embed"><div class="iframely-responsive" style="height: 140px; width:600px; padding-bottom: 0;"><a href="https://github.com/Seigenkousya/kirara_scraper" data-iframely-url="//cdn.iframe.ly/api/iframe?url=https%3A%2F%2Fgithub.com%2FSeigenkousya%2Fkirara_scraper&key=dd60c159c87f40f1ecca839b51b281e8"></a></div></div><script async src="https://cdn.iframe.ly/embed.js" charset="utf-8"></script>
 <p>とりあえず使用したプログラムを示します。（プログラムに興味ない人は読み飛ばして結果と考察に飛んでください）</p>
 <div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-python" data-lang="python"><span style="color:#75715e">#-*-coding:utf-8 -*-</span>
 <span style="color:#f92672">import</span> re
@@ -341,103 +326,93 @@ plt<span style="color:#f92672">.</span>legend(bbox_to_anchor<span style="color:#
 plt<span style="color:#f92672">.</span>subplots_adjust(right<span style="color:#f92672">=</span><span style="color:#ae81ff">0.7</span>)
 plt<span style="color:#f92672">.</span>xticks(date_place,date_list)
 plt<span style="color:#f92672">.</span>yticks(range(<span style="color:#ae81ff">1</span>,bottom))
-plt<span style="color:#f92672">.</span>show()</code></pre></div>
-<h3 id="解説">解説</h3>
-
+plt<span style="color:#f92672">.</span>show()
+</code></pre></div><h3 id="解説">解説</h3>
 <p>表紙と巻頭カラーが一緒かどうかは単純に正規表現で解決しました。</p>
-<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-python" data-lang="python"><span style="color:#66d9ef">if</span> re<span style="color:#f92672">.</span>search(<span style="color:#e6db74">&#39;表紙(&amp;|＆)巻頭カラー&#39;</span>,info<span style="color:#f92672">.</span>text):</code></pre></div>
-<p>今回のポイントはbeautifulsoup4での要素の取得。<br />
-前回は単純にタグ名を指定して全部を配列にして取得していたけど今回は一度classを指定してからそのクラスの中の任意の要素を指定して再検索する方法にしました。<br />
-この方法ができるようになったのはでかい。<br />
-beautifulsoup4のclassはTagとResult.setの2つがあって扱いが違うので結構大変でした。<br />
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-python" data-lang="python"><span style="color:#66d9ef">if</span> re<span style="color:#f92672">.</span>search(<span style="color:#e6db74">&#39;表紙(&amp;|＆)巻頭カラー&#39;</span>,info<span style="color:#f92672">.</span>text):
+</code></pre></div><p>今回のポイントはbeautifulsoup4での要素の取得。<br>
+前回は単純にタグ名を指定して全部を配列にして取得していたけど今回は一度classを指定してからそのクラスの中の任意の要素を指定して再検索する方法にしました。<br>
+この方法ができるようになったのはでかい。<br>
+beautifulsoup4のclassはTagとResult.setの2つがあって扱いが違うので結構大変でした。<br>
 同じ配列系でもアクセスの仕方が違うし&hellip;</p>
 <div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-python" data-lang="python">info<span style="color:#f92672">=</span>(source<span style="color:#f92672">.</span>find_all(<span style="color:#e6db74">&#34;div&#34;</span>,class_<span style="color:#f92672">=</span><span style="color:#e6db74">&#34;info&#34;</span>))[<span style="color:#ae81ff">1</span>]
-strongs<span style="color:#f92672">=</span>info<span style="color:#f92672">.</span>find_all(<span style="color:#e6db74">&#34;strong&#34;</span>)</code></pre></div>
-<p>それから、前回示したグラフには地味に大きな問題があって独立したデータはグラフに描写されないという問題点を抱えていました。<br />
-たとえば、3月号と5月号が休載だった場合、4月号の掲載順は表示されません。<br />
+strongs<span style="color:#f92672">=</span>info<span style="color:#f92672">.</span>find_all(<span style="color:#e6db74">&#34;strong&#34;</span>)
+</code></pre></div><p>それから、前回示したグラフには地味に大きな問題があって独立したデータはグラフに描写されないという問題点を抱えていました。<br>
+たとえば、3月号と5月号が休載だった場合、4月号の掲載順は表示されません。<br>
 これは、データにマーカー（いわゆるグラフに打つ点）をセンターカラーにしかプロットしてなかったからで常にマーカーをプロットしてないと
-独立したデータが見えないことに気がついたのです。（点と点を結んで線にしたときに初めて見える）<br />
-ただし、マーカーの種類は1種類しか指定できません。困りました。<br />
+独立したデータが見えないことに気がついたのです。（点と点を結んで線にしたときに初めて見える）<br>
+ただし、マーカーの種類は1種類しか指定できません。困りました。<br>
 そこで、以下のように全部の点に小さい点をプロットして、センターカラーのときはその上から新しく点をプロットすることにしました。</p>
 <div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-python" data-lang="python"><span style="color:#66d9ef">for</span> art <span style="color:#f92672">in</span> Article_list:
     plt<span style="color:#f92672">.</span>plot(X_list, art<span style="color:#f92672">.</span>list, linestyle<span style="color:#f92672">=</span><span style="color:#e6db74">&#39;solid&#39;</span>, marker<span style="color:#f92672">=</span><span style="color:#e6db74">&#34;.&#34;</span>, label<span style="color:#f92672">=</span>art<span style="color:#f92672">.</span>label)
 <span style="color:#66d9ef">for</span> _x,_y,_color <span style="color:#f92672">in</span> zip(mark_point_x,mark_point_y,mark_point_color):
-    plt<span style="color:#f92672">.</span>plot(_x, _y, linestyle<span style="color:#f92672">=</span><span style="color:#e6db74">&#39;none&#39;</span>, marker<span style="color:#f92672">=</span><span style="color:#e6db74">&#39;D&#39;</span>, color<span style="color:#f92672">=</span>_color)</code></pre></div>
-<p>マークする点はまとめて1つの配列に入れて後から色を指定して区別を付けました。</p>
+    plt<span style="color:#f92672">.</span>plot(_x, _y, linestyle<span style="color:#f92672">=</span><span style="color:#e6db74">&#39;none&#39;</span>, marker<span style="color:#f92672">=</span><span style="color:#e6db74">&#39;D&#39;</span>, color<span style="color:#f92672">=</span>_color)
+</code></pre></div><p>マークする点はまとめて1つの配列に入れて後から色を指定して区別を付けました。</p>
 <div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-python" data-lang="python">color_cycle <span style="color:#f92672">=</span> plt<span style="color:#f92672">.</span>rcParams[<span style="color:#e6db74">&#39;axes.prop_cycle&#39;</span>]<span style="color:#f92672">.</span>by_key()[<span style="color:#e6db74">&#39;color&#39;</span>]
 <span style="color:#66d9ef">if</span> art<span style="color:#f92672">.</span>is_centercolor(center_colors):
 	mark_point_x<span style="color:#f92672">.</span>append(index)
 	mark_point_y<span style="color:#f92672">.</span>append(i)
-	mark_point_color<span style="color:#f92672">.</span>append(color_cycle[color_index])</code></pre></div>
-<h1 id="結果と考察">結果と考察</h1>
-
-<p>取得できたデータはこんな感じ。<br />
-↓キャラットの掲載順<br />
-<img src="/images/carat_2020_mod.png" alt="carat_result" />
-ちゃんとひだまりの独立したデータも点で表示できている。<br />
+	mark_point_color<span style="color:#f92672">.</span>append(color_cycle[color_index])
+</code></pre></div><h1 id="結果と考察">結果と考察</h1>
+<p>取得できたデータはこんな感じ。<br>
+↓キャラットの掲載順<br>
+<img src="/images/carat_2020_mod.png" alt="carat_result">
+ちゃんとひだまりの独立したデータも点で表示できている。<br>
 いい感じ。</p>
-
-<p>グラフを眺めていてあることに気が付きました。<br />
-それは人気とかアンケートの結果に関係なく10番目に人気作品が置かれていることです。<br />
-10番目に来た作品は次の週で大幅に順位を上げるかセンターカラーに来ています。<br />
-MAXにもV字回復する点があります。それはセンターカラーです。<br />
+<p>グラフを眺めていてあることに気が付きました。<br>
+それは人気とかアンケートの結果に関係なく10番目に人気作品が置かれていることです。<br>
+10番目に来た作品は次の週で大幅に順位を上げるかセンターカラーに来ています。<br>
+MAXにもV字回復する点があります。それはセンターカラーです。<br>
 ↓MAXの掲載順
-<img src="/images/max_2020_mod.png" alt="carat_result" /></p>
-
-<p>しかし、キャラットの10番目にはセンターカラーを示すダイアモンドの印はついていません。<br />
-これはキャラットにはセンターカラー以外にも定位置が存在するということでは無いでしょうか？<br />
-まぁだから？と言われればそうですが、単純にアンケートの結果で並べるんじゃなくて更に掲載順を工夫している気がするんですよね。<br />
-人気順だと途中で読むのやめちゃって多くの作品を読んでくれない可能性がありますから。<br />
+<img src="/images/max_2020_mod.png" alt="carat_result"></p>
+<p>しかし、キャラットの10番目にはセンターカラーを示すダイアモンドの印はついていません。 <br>
+これはキャラットにはセンターカラー以外にも定位置が存在するということでは無いでしょうか？ <br>
+まぁだから？と言われればそうですが、単純にアンケートの結果で並べるんじゃなくて更に掲載順を工夫している気がするんですよね。<br>
+人気順だと途中で読むのやめちゃって多くの作品を読んでくれない可能性がありますから。<br>
 だからアニメ化されて人気のある作品を手頃な位置に定位置として置いてるんじゃないかと思うんです。（邪推）</p>
-
 <p>ちなみにセンターカラーの回数はこちら。</p>
-
 <blockquote>
-<p>Counter({<br />
- &lsquo;「アニマエール!」&rsquo;: 7,<br />
- &lsquo;「NEW GAME!」&rsquo;: 6,<br />
- &lsquo;「まちカドまぞく」&rsquo;: 6,<br />
- &lsquo;「RPG不動産」&rsquo;: 5,<br />
- &lsquo;「精霊さまの難儀な日常」&rsquo;: 5,<br />
- &lsquo;「異なる次元の管理人さん」&rsquo;: 4,<br />
- &lsquo;「Aチャンネル」&rsquo;: 4,<br />
- &lsquo;「ブレンド・S」&rsquo;: 4,<br />
- &lsquo;「メイドさんの下着は特別です。」&rsquo;: 4,<br />
- &lsquo;「魔王の娘からは逃れられない」&rsquo;: 4,<br />
- &lsquo;「あやしびと」&rsquo;: 4,<br />
- &lsquo;「キルミーベイベー」&rsquo;: 3,<br />
- &lsquo;「かぐらまいまい!」&rsquo;: 3,<br />
- &lsquo;「先パイがお呼びです!」&rsquo;: 3,<br />
- &lsquo;「恋する小惑星」&rsquo;: 3,<br />
- &lsquo;「紡ぐ乙女と大正の月」&rsquo;: 3,<br />
- &lsquo;「すわっぷ⇔すわっぷ」&rsquo;: 2,<br />
- &lsquo;「おちこぼれフルーツタルト」&rsquo;: 2,<br />
- &lsquo;「mono」&rsquo;: 2,<br />
- &lsquo;「まちカドまぞく」」&rsquo;: 1,<br />
- &lsquo;「かぐらまいまい！」&rsquo;: 1,<br />
- &lsquo;「ぐるメソッド！」&rsquo;: 1,<br />
- &lsquo;「はるみねーしょん」&rsquo;: 1,<br />
- &lsquo;「正義ノ花道」&rsquo;: 1,<br />
- &lsquo;「No Color!」&rsquo;: 1})</p>
+<p>Counter({<br>
+&lsquo;「アニマエール!」': 7,<br>
+&lsquo;「NEW GAME!」': 6,<br>
+&lsquo;「まちカドまぞく」': 6,<br>
+&lsquo;「RPG不動産」': 5,<br>
+&lsquo;「精霊さまの難儀な日常」': 5,<br>
+&lsquo;「異なる次元の管理人さん」': 4,<br>
+&lsquo;「Aチャンネル」': 4,<br>
+&lsquo;「ブレンド・S」': 4,<br>
+&lsquo;「メイドさんの下着は特別です。」': 4,<br>
+&lsquo;「魔王の娘からは逃れられない」': 4,<br>
+&lsquo;「あやしびと」': 4,<br>
+&lsquo;「キルミーベイベー」': 3,<br>
+&lsquo;「かぐらまいまい!」': 3,<br>
+&lsquo;「先パイがお呼びです!」': 3,<br>
+&lsquo;「恋する小惑星」': 3,<br>
+&lsquo;「紡ぐ乙女と大正の月」': 3,<br>
+&lsquo;「すわっぷ⇔すわっぷ」': 2,<br>
+&lsquo;「おちこぼれフルーツタルト」': 2,<br>
+&lsquo;「mono」': 2,<br>
+&lsquo;「まちカドまぞく」」': 1,<br>
+&lsquo;「かぐらまいまい！」': 1,<br>
+&lsquo;「ぐるメソッド！」': 1,<br>
+&lsquo;「はるみねーしょん」': 1,<br>
+&lsquo;「正義ノ花道」': 1,<br>
+&lsquo;「No Color!」': 1})</p>
 </blockquote>
-
-<p>例によって表記ゆれとか担当者さんのタイポで正しくカウントできてませんね&hellip;<br />
+<p>例によって表記ゆれとか担当者さんのタイポで正しくカウントできてませんね&hellip;<br>
 タイポとかどうやって対応すればいいんだ&hellip;</p>
-
 <h1 id="感想">感想</h1>
-
-<p>ぷろぐらむ舐めてたら痛い目見た。（ぷろぐらむこわい）<br />
-まぁこれで今年の掲載順企画はおしまいかな。（購読してるのはMAXとキャラットだけだし）<br />
-今後はきららのデータベースサイトづくりに注力したいと思います。<br />
-データの取得については今回で調子を取り戻したし、MAXとキャラットについてはプログラムを流用できる部分もあるので良い準備運動になったかと思います。<br />
+<p>ぷろぐらむ舐めてたら痛い目見た。（ぷろぐらむこわい）<br>
+まぁこれで今年の掲載順企画はおしまいかな。（購読してるのはMAXとキャラットだけだし）<br>
+今後はきららのデータベースサイトづくりに注力したいと思います。<br>
+データの取得については今回で調子を取り戻したし、MAXとキャラットについてはプログラムを流用できる部分もあるので良い準備運動になったかと思います。<br>
 成果物もいい感じにまとまっているし満足です。</p>
-
-<p>むしろ成果をどう広めて行くかが今後の課題ですね。<br />
-いいものを作ってもそれ誰にも知られなければ意味がないですし、データを公開する理由があんまり無くなってしまいます。<br />
-まぁTwitterのフォロワーが少ないのが大きな原因ですかね。<br />
-この界隈の人間は自分を含めて、他人の発言より絵師のイラストを見たくてTwitterをやってるわけだし&hellip;（偏見）<br />
-難しいなぁ&hellip;<br />
-誰かRTして（懇願<br />
+<p>むしろ成果をどう広めて行くかが今後の課題ですね。<br>
+いいものを作ってもそれ誰にも知られなければ意味がないですし、データを公開する理由があんまり無くなってしまいます。<br>
+まぁTwitterのフォロワーが少ないのが大きな原因ですかね。<br>
+この界隈の人間は自分を含めて、他人の発言より絵師のイラストを見たくてTwitterをやってるわけだし&hellip;（偏見）<br>
+難しいなぁ&hellip;<br>
+誰かRTして（懇願<br>
 まぁそういう広報活動もがんばります&hellip;</p>
 
     </div>

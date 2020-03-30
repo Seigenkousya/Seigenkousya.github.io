@@ -32,7 +32,7 @@
 
 
 <meta charset="utf-8" />
-    <meta name="generator" content="Hugo 0.59.1" />
+    <meta name="generator" content="Hugo 0.67.0" />
     <meta name="viewport" content="width=device-width, initial-scale=1" />
     <meta name="author" content="Takana Norimasa" />
     <meta name="description" content="" />
@@ -68,9 +68,9 @@ $ uname -a Linux kali 4.18.0-kali2-amd64 #1 SMP Debian 4.18.10-2kali1 (2018-10-0
  要はプログラムと出力がまったく等しいプログラムのことです。
 perlでいうとこう。
 $_=q{print&#34;\$_=q{$_};eval&#34;};eval 実際に確かめてみると、
-$ perl -E &#39;$_=q{print&#34;\$_=q{$_};eval&#34;};eval&#39; $_=q{print&#34;\$_=q{$_};eval&#34;};eval たしかに入力と出力が一致する。
+$ perl -E &#39;$_=q{print&quot;\$_=q{$_};eval&quot;};eval&#39; $_=q{print&quot;\$_=q{$_};eval&quot;};eval たしかに入力と出力が一致する。
 これは、
- 暗黙変数$_にq{print&quot;\$\_=q{$_};eval&quot;}を代入する evalが実行される evalは暗黙的に$_を参照するのでq{print&quot;\$_=q{$_};eval&quot;}がevalに渡される q演算子q//より、文字列print&quot;\$_=q{$_};eval&quot;が渡されることになる evalに渡されるprint&quot;\$_=q{$_};eval&quot;のうち、エスケープされていないq{$_}の部分の$_は最初に代入したq{print&quot;\$\_=q{$_};eval&quot;}になるので 標準出力に$_=q{print&quot;\$_=q{$_};eval&quot;};evalが出力される  という流れで実行されるからです。"/>
+ 暗黙変数$_にq{print&quot;\$\_=q{$_};eval&quot;}を代入する   evalが実行される evalは暗黙的に$_を参照するのでq{print&quot;\$_=q{$_};eval&quot;}がevalに渡される q演算子q//より、文字列print&quot;\$_=q{$_};eval&quot;が渡されることになる evalに渡されるprint&quot;\$_=q{$_};eval&quot;のうち、エスケープされていないq{$_}の部分の$_は最初に代入したq{print&quot;\$\_=q{$_};eval&quot;}になるので 標準出力に$_=q{print&quot;\$_=q{$_};eval&quot;};evalが出力される  という流れで実行されるからです。"/>
 
     <meta property="og:title" content="桃音ちゃんのAAの形をした桃音ちゃんのAAの形をした桃音ちゃんのAAの形をした...桃音ちゃんのAAを出力するプログラム" />
 <meta property="og:description" content="この記事は「まんがタイムきらら Advent Calendar 2019」の23日目の記事にして13日目のオマケ記事です。
@@ -87,9 +87,9 @@ $ uname -a Linux kali 4.18.0-kali2-amd64 #1 SMP Debian 4.18.10-2kali1 (2018-10-0
  要はプログラムと出力がまったく等しいプログラムのことです。
 perlでいうとこう。
 $_=q{print&#34;\$_=q{$_};eval&#34;};eval 実際に確かめてみると、
-$ perl -E &#39;$_=q{print&#34;\$_=q{$_};eval&#34;};eval&#39; $_=q{print&#34;\$_=q{$_};eval&#34;};eval たしかに入力と出力が一致する。
+$ perl -E &#39;$_=q{print&quot;\$_=q{$_};eval&quot;};eval&#39; $_=q{print&quot;\$_=q{$_};eval&quot;};eval たしかに入力と出力が一致する。
 これは、
- 暗黙変数$_にq{print&quot;\$\_=q{$_};eval&quot;}を代入する evalが実行される evalは暗黙的に$_を参照するのでq{print&quot;\$_=q{$_};eval&quot;}がevalに渡される q演算子q//より、文字列print&quot;\$_=q{$_};eval&quot;が渡されることになる evalに渡されるprint&quot;\$_=q{$_};eval&quot;のうち、エスケープされていないq{$_}の部分の$_は最初に代入したq{print&quot;\$\_=q{$_};eval&quot;}になるので 標準出力に$_=q{print&quot;\$_=q{$_};eval&quot;};evalが出力される  という流れで実行されるからです。" />
+ 暗黙変数$_にq{print&quot;\$\_=q{$_};eval&quot;}を代入する   evalが実行される evalは暗黙的に$_を参照するのでq{print&quot;\$_=q{$_};eval&quot;}がevalに渡される q演算子q//より、文字列print&quot;\$_=q{$_};eval&quot;が渡されることになる evalに渡されるprint&quot;\$_=q{$_};eval&quot;のうち、エスケープされていないq{$_}の部分の$_は最初に代入したq{print&quot;\$\_=q{$_};eval&quot;}になるので 標準出力に$_=q{print&quot;\$_=q{$_};eval&quot;};evalが出力される  という流れで実行されるからです。" />
 <meta property="og:type" content="article" />
 <meta property="og:url" content="https://Seigenkousya.github.io/post/momone_aa/" />
 <meta property="article:published_time" content="2019-12-21T23:40:35+09:00" />
@@ -154,108 +154,86 @@ $ perl -E &#39;$_=q{print&#34;\$_=q{$_};eval&#34;};eval&#39; $_=q{print&#34;\$_=
           <a class="tag" href="https://Seigenkousya.github.io/tags/%E6%8A%80%E8%A1%93%E6%B4%BB%E5%8B%95/">技術活動</a><a class="tag" href="https://Seigenkousya.github.io/tags/%E3%81%A9%E3%81%86%E3%81%97%E3%81%A6%E7%A7%81%E3%81%8C%E7%BE%8E%E8%A1%93%E7%A7%91%E3%81%AB/">どうして私が美術科に</a></div></div>
     </header>
     <div class="post-content">
-      
-
-<p>この記事は「<a href="https://adventar.org/calendars/4098">まんがタイムきらら Advent Calendar 2019</a>」の23日目の記事にして<a href="https://seigenkousya.github.io/post/momone_fizzbuzz/">13日目</a>のオマケ記事です。<br />
+      <p>この記事は「<a href="https://adventar.org/calendars/4098">まんがタイムきらら Advent Calendar 2019</a>」の23日目の記事にして<a href="https://seigenkousya.github.io/post/momone_fizzbuzz/">13日目</a>のオマケ記事です。<br>
 プログラムの見た目自体は変わってないので伝わり辛いでしょうがお付き合いください。</p>
-
 <h1 id="前回のあらすじ">前回のあらすじ</h1>
-
-<p>精神を病んで桃音ちゃん型のプログラムを書いた。<br />
-<img src="/images/1_momone_FizzBuzz.png" alt="momone_FizzBuzz" />
-しかし、プログラムの内容はFizzBuzzという相崎先生に申し訳ないレベルの簡単なプログラム。<br />
+<p>精神を病んで桃音ちゃん型のプログラムを書いた。<br>
+<img src="/images/1_momone_FizzBuzz.png" alt="momone_FizzBuzz">
+しかし、プログラムの内容はFizzBuzzという相崎先生に申し訳ないレベルの簡単なプログラム。<br>
 もっと、見た人がおぉってなるようなプログラムにしたい。（<del>あと、しょうもないコメントを使った手法から脱却したい</del>）</p>
-
 <h1 id="今回のあらすじ">今回のあらすじ</h1>
-
-<p>出力自体も桃音ちゃんだったらめっちゃエモく無いですか？（唐突な思いつき）<br />
-いっそのこと自己参照型のプログラムにしたら良さそう（これをQuine<sup class="footnote-ref" id="fnref:1"><a href="#fn:1">1</a></sup>と言います）。<br />
+<p>出力自体も桃音ちゃんだったらめっちゃエモく無いですか？（唐突な思いつき）<br>
+いっそのこと自己参照型のプログラムにしたら良さそう（これをQuine<sup id="fnref:1"><a href="#fn:1" class="footnote-ref" role="doc-noteref">1</a></sup>と言います）。<br>
 そんなこんな今回も気合で書いていきます。</p>
-
 <h2 id="環境">環境</h2>
-
 <p>前回に引き続きPerlで。</p>
-<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-terminal" data-lang="terminal">$ uname -a
+<pre><code class="language-terminal" data-lang="terminal">$ uname -a
 Linux kali 4.18.0-kali2-amd64 #1 SMP Debian 4.18.10-2kali1 (2018-10-09) x86_64 GNU/Linux
 $ perl --version
-This is perl 5, version 28, subversion 1 (v5.28.1) built for x86_64-linux-gnu-thread-multi</code></pre></div>
-<h2 id="quineとは">Quineとは？</h2>
-
+This is perl 5, version 28, subversion 1 (v5.28.1) built for x86_64-linux-gnu-thread-multi
+</code></pre><h2 id="quineとは">Quineとは？</h2>
 <p>wikiの説明を借りると、</p>
-
 <blockquote>
 <p>クワイン（英: Quine）は、コンピュータプログラムの一種で、自身のソースコードと完全に同じ文字列を出力するプログラムである。</p>
 </blockquote>
-
-<p>要はプログラムと出力がまったく等しいプログラムのことです。<br />
+<p>要はプログラムと出力がまったく等しいプログラムのことです。<br>
 perlでいうとこう。</p>
-<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-perl" data-lang="perl">$_<span style="color:#f92672">=</span><span style="color:#e6db74">q{print&#34;\$_=q{$_};eval&#34;}</span>;eval</code></pre></div>
-<p>実際に確かめてみると、</p>
-<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-terminal" data-lang="terminal">$ perl -E &#39;$_=q{print&#34;\$_=q{$_};eval&#34;};eval&#39;
-$_=q{print&#34;\$_=q{$_};eval&#34;};eval</code></pre></div>
-<p>たしかに入力と出力が一致する。<br />
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-perl" data-lang="perl">$_<span style="color:#f92672">=</span><span style="color:#e6db74">q{print&#34;\$_=q{$_};eval&#34;}</span>;eval
+</code></pre></div><p>実際に確かめてみると、</p>
+<pre><code class="language-terminal" data-lang="terminal">$ perl -E '$_=q{print&quot;\$_=q{$_};eval&quot;};eval'
+$_=q{print&quot;\$_=q{$_};eval&quot;};eval
+</code></pre><p>たしかに入力と出力が一致する。<br>
 これは、</p>
-
 <ol>
 <li>暗黙変数$_に<code>q{print&quot;\$\_=q{$_};eval&quot;}</code>を代入する</li>
+</ol>
+<ul>
 <li>evalが実行される</li>
 <li>evalは暗黙的に<code>$_</code>を参照するので<code>q{print&quot;\$_=q{$_};eval&quot;}</code>がevalに渡される</li>
 <li>q演算子<code>q//</code>より、文字列<code>print&quot;\$_=q{$_};eval&quot;</code>が渡されることになる</li>
 <li>evalに渡される<code>print&quot;\$_=q{$_};eval&quot;</code>のうち、エスケープされていない<code>q{$_}</code>の部分の<code>$_</code>は最初に代入した<code>q{print&quot;\$\_=q{$_};eval&quot;}</code>になるので</li>
 <li>標準出力に<code>$_=q{print&quot;\$_=q{$_};eval&quot;};eval</code>が出力される</li>
-</ol>
-
+</ul>
 <p>という流れで実行されるからです。</p>
-
-<p>これらの実行の流れを見ているとあることに気がつきます。<br />
-それは、<code>print</code>命令の前に何を置いてもQuineとして成立するということです。<br />
-何を書こうが暗黙変数で参照されてQuineになりますが、標準出力に関係ない処理である必要があります。<br />
+<p>これらの実行の流れを見ているとあることに気がつきます。<br>
+それは、<code>print</code>命令の前に何を置いてもQuineとして成立するということです。<br>
+何を書こうが暗黙変数で参照されてQuineになりますが、標準出力に関係ない処理である必要があります。<br>
 例えば、変数<code>$hello</code>をprint命令の前に置いてもQuineは成立します。</p>
-<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-perl" data-lang="perl">$_<span style="color:#f92672">=</span><span style="color:#e6db74">q{$hello;print&#34;\$_=q{$_};eval&#34;}</span>;eval</code></pre></div>
-<p>試してみると、</p>
-<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-terminal" data-lang="terminal">$ perl -E &#39;$_=q{$hello;print&#34;\$_=q{$_};eval&#34;};eval&#39;
-$_=q{$hello;print&#34;\$_=q{$_};eval&#34;};eval</code></pre></div>
-<p>ちゃんと動く。<br />
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-perl" data-lang="perl">$_<span style="color:#f92672">=</span><span style="color:#e6db74">q{$hello;print&#34;\$_=q{$_};eval&#34;}</span>;eval
+</code></pre></div><p>試してみると、</p>
+<pre><code class="language-terminal" data-lang="terminal">$ perl -E '$_=q{$hello;print&quot;\$_=q{$_};eval&quot;};eval'
+$_=q{$hello;print&quot;\$_=q{$_};eval&quot;};eval
+</code></pre><p>ちゃんと動く。<br>
 ならばこれを応用すればAAにも適用できるのでは？と考えました。</p>
-
 <h1 id="実際にやってみた">実際にやってみた</h1>
-
 <p>実際の構造はこんな感じ。</p>
-<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-perl" data-lang="perl">$_<span style="color:#f92672">=</span><span style="color:#e6db74">q|q* Ascii art *;print&#34;\$_=q{$_};eval&#34;;q* Ascii art *;|</span>;eval;</code></pre></div>
-<p>できるだけAscii artの部分を最大化してコード部分を短くしました。<br />
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-perl" data-lang="perl">$_<span style="color:#f92672">=</span><span style="color:#e6db74">q|q* Ascii art *;print&#34;\$_=q{$_};eval&#34;;q* Ascii art *;|</span>;eval;
+</code></pre></div><p>できるだけAscii artの部分を最大化してコード部分を短くしました。<br>
 q演算子の区切りにはAAで使用率の低かった<code>|</code>と<code>*</code>を採用しました。</p>
-
 <p>できたコードがこちら。（前回の上の画像と変わらないじゃないかだって？動かせば分かりますよ）</p>
-
-<p><img src="/images/momone_quine.png" alt="momone_quine" /></p>
-
-<p>このプログラムは桃音ちゃんのAAであると同時に桃音ちゃんのAAを表示するプログラムでもあります。<br />
-そして、この表示プログラムはQuineの要件を満たしているため自己参照プログラムでもあります。<br />
-つまり、このプログラムは桃音ちゃんのAAを表示するプログラムであると同時に桃音ちゃんのAAを表示するプログラムを表示するプログラムでもあるのです。<br />
+<p><img src="/images/momone_quine.png" alt="momone_quine"></p>
+<p>このプログラムは桃音ちゃんのAAであると同時に桃音ちゃんのAAを表示するプログラムでもあります。<br>
+そして、この表示プログラムはQuineの要件を満たしているため自己参照プログラムでもあります。<br>
+つまり、このプログラムは桃音ちゃんのAAを表示するプログラムであると同時に桃音ちゃんのAAを表示するプログラムを表示するプログラムでもあるのです。<br>
 これらのことをまとめるとこのプログラムは桃音ちゃんのAAの外見をした桃音ちゃんのAAを表示するプログラムを表示するプログラムを表示するプログラムを表示するプログラム&hellip;ということになります。</p>
-
 <p><font size="36">~𝑯𝒂𝒑𝒑𝒚 𝑬𝒏𝒅~</font></p>
-
 <h1 id="終わりに">終わりに</h1>
-
-<p>前回から少し成長してコメントを使ったせこい技を使わずに済んだのは大きいかなと思います。<br />
-桃音ちゃんから桃音ちゃんが生成されるなんて素晴らしいですね。（危険な主義主張）<br />
+<p>前回から少し成長してコメントを使ったせこい技を使わずに済んだのは大きいかなと思います。<br>
+桃音ちゃんから桃音ちゃんが生成されるなんて素晴らしいですね。（危険な主義主張）<br>
 プログラミングにはまだまだ可能性がいっぱいあると思うのでこれからも精進していきたいなぁと思いました。</p>
-
-<p>まぁこの記事を読んでいる読者諸氏なら当然持っているだろうが、一応言っておく。<br />
-どうして私が美術科に！？を買おう！（ダイマ）<br />
-<a href="https://www.amazon.co.jp/gp/product/B06XFYK4PN?ref_=dbs_p_pwh_rwt_anx_cl_0&amp;storeType=ebooks">1巻：https://www.amazon.co.jp/gp/product/B06XFYK4PN?ref_=dbs_p_pwh_rwt_anx_cl_0&amp;storeType=ebooks</a><br />
-<a href="https://www.amazon.co.jp/gp/product/B07BRMN6S7?ref_=dbs_p_pwh_rwt_anx_cl_1&amp;storeType=ebooks">2巻：https://www.amazon.co.jp/gp/product/B07BRMN6S7?ref_=dbs_p_pwh_rwt_anx_cl_1&amp;storeType=ebooks</a><br />
+<p>まぁこの記事を読んでいる読者諸氏なら当然持っているだろうが、一応言っておく。<br>
+どうして私が美術科に！？を買おう！（ダイマ）<br>
+<a href="https://www.amazon.co.jp/gp/product/B06XFYK4PN?ref_=dbs_p_pwh_rwt_anx_cl_0&amp;storeType=ebooks">1巻：https://www.amazon.co.jp/gp/product/B06XFYK4PN?ref_=dbs_p_pwh_rwt_anx_cl_0&amp;storeType=ebooks</a><br>
+<a href="https://www.amazon.co.jp/gp/product/B07BRMN6S7?ref_=dbs_p_pwh_rwt_anx_cl_1&amp;storeType=ebooks">2巻：https://www.amazon.co.jp/gp/product/B07BRMN6S7?ref_=dbs_p_pwh_rwt_anx_cl_1&amp;storeType=ebooks</a><br>
 <a href="https://www.amazon.co.jp/gp/product/B07QCBKKZB?ref_=dbs_p_pwh_rwt_anx_cl_1&amp;storeType=ebooks">3巻：https://www.amazon.co.jp/gp/product/B07QCBKKZB?ref_=dbs_p_pwh_rwt_anx_cl_1&amp;storeType=ebooks</a></p>
-<div class="footnotes">
-
-<hr />
-
+<section class="footnotes" role="doc-endnotes">
+<hr>
 <ol>
-<li id="fn:1"><a href="https://ja.wikipedia.org/wiki/%E3%82%AF%E3%83%AF%E3%82%A4%E3%83%B3_(%E3%83%97%E3%83%AD%E3%82%B0%E3%83%A9%E3%83%9F%E3%83%B3%E3%82%B0)">Quineのwikipedia</a>
- <a class="footnote-return" href="#fnref:1"><sup>[return]</sup></a></li>
+<li id="fn:1" role="doc-endnote">
+<p><a href="https://ja.wikipedia.org/wiki/%E3%82%AF%E3%83%AF%E3%82%A4%E3%83%B3_(%E3%83%97%E3%83%AD%E3%82%B0%E3%83%A9%E3%83%9F%E3%83%B3%E3%82%B0)">Quineのwikipedia</a> <a href="#fnref:1" class="footnote-backref" role="doc-backlink">&#x21a9;&#xfe0e;</a></p>
+</li>
 </ol>
-</div>
+</section>
 
     </div>
     <div class="post-footer">
