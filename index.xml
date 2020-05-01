@@ -6,10 +6,52 @@
     <description>Recent content on 正弦工社</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>ja</language>
-    <lastBuildDate>Tue, 28 Apr 2020 14:47:48 +0900</lastBuildDate>
+    <lastBuildDate>Fri, 01 May 2020 02:43:06 +0900</lastBuildDate>
     
 	<atom:link href="https://Seigenkousya.github.io/index.xml" rel="self" type="application/rss+xml" />
     
+    
+    <item>
+      <title>今月のまとめ的なやつ(2020 Apr)</title>
+      <link>https://Seigenkousya.github.io/post/monthry/2020_04/</link>
+      <pubDate>Fri, 01 May 2020 02:43:06 +0900</pubDate>
+      
+      <guid>https://Seigenkousya.github.io/post/monthry/2020_04/</guid>
+      <description>いきなり4月が終わってしまいキレ散らかしている。
+何で？（殺意）
+ともあれキャラットの感想を書き終わったらすぐこの記事がやってくるのだから覚えておかなくてはならない。
+4月のまとめ いつも通り正弦工社の活動だけじゃなくて中の人の個人的な活動内容も含みます。（評論系はコミュニティ的に作って人数増やしてもも面白いかも知れない）
+4月は引きこもり生活のおかげで溜まっていたタスクを消化しつつありだんだん新しいことをやれるようになりました。
+どっちかというと本垢での活動が多かった気がします。（まぁ本垢に出せないアウトプットを吐き出すのもこの同人の仕事ではあるけど）
+ということで4月の振り返り。
+相崎先生にお手紙を書いた やっとか！！！！！！
+何ヶ月かかってるんだお前！！！
+まぁとにかくあのヤバめな量の感想を書き上げたのは偉いと思う。
+去年完結したときに手紙を書こうとしてメンタルをやられてずっとそのままだったが一年越しに読み切りの感想も書けるからとあれこれ本格的に準備し始めた。
+&amp;hellip;のが去年の12月ごろ。（それより前からダラダラやってたけど）
+ハッカソンと重なってだらだらしてたらもう3月。先月のまとめを見る限りこの時点では半分も行ってない。
+気合を入れて付箋を貼りながらの精読の作業を終えたのが4月の頭。（すべての伏線や描写を回収できた（はず））
+付箋の貼りすぎで単行本の厚みが1.5倍になってしまい笑ってしまった。（例によって絵面が狂気的で画像を貼ったらフォロワーが0人になること請け合いなので控える）
+精読して思ったことですがあの漫画は1コマあたりの密度が半端じゃないですね。
+本当に制服の着こなしとかちょっとした書き文字にまでキャラの「らしさ」が詰まっています。
+実に素晴らしい。きららの精神が形になったような漫画だと思います。
+1ページあたり5分かけて付箋を貼りながら読んだのでどうびじゅを完全に理解しました。今の僕は無敵です。
+それから手紙の下書きをPCで書いた時点でもう4月の7日くらい。（今見たら5300文字あった）
+手書きで清書するのが意外と大変だった記憶。というか自分が思ったより文字数があってビックリ。
+まぁそんなこんなで4月初旬にはどうにか感想を送り出すことができた。
+今まで感想を溜め込んでいたので凄まじい量になってしまったけど。（レターパックで送りました（小声））
+編集部の人許して（懇願）
+でも言いたいことを言えたので非常にスッキリ。
+これからはこまめに感想を作者に伝えるようにしよう。
+このサイトを改装 もはや毎月恒例。
+今月はfaviconの修正とTwitterのプレビュー画像周りの設定をした。
+faviconっていうのはブラウザのタブに出てくるアレ。
+余白の黒が気になったのでちゃんと丸になるように透過pngを使って修正した。
+透過pngを使えるジェネレータがなくて大変だった&amp;hellip;
+Twitterの方はリンクを貼るときにサムネみたいなやつをmetaタグで設定した。
+こんな感じ。
+&amp;lt;meta name=&amp;#34;twitter:card&amp;#34; content=&amp;#34;summary&amp;#34; /&amp;gt; &amp;lt;meta name=&amp;#34;twitter:site&amp;#34; content=&amp;#34;@Seigenkousya&amp;#34; /&amp;gt; &amp;lt;meta name=&amp;#34;twitter:title&amp;#34; content=&amp;#34;{{ if .IsHome }}{{ .Site.Title }}{{ else }}{{ .Title }} &amp;amp;nbsp; - {{ .Site.Title }}{{ end }}&amp;#34; /&amp;gt; &amp;lt;meta name=&amp;#34;twitter:description&amp;#34; content=&amp;#34;{{ if .IsHome }}{{ .</description>
+    </item>
     
     <item>
       <title>まんがタイムきららキャラット2020年6月号感想</title>
