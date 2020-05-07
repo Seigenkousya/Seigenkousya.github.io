@@ -1,22 +1,52 @@
 <?xml version="1.0" encoding="utf-8" standalone="yes"?>
 <rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
   <channel>
-    <title>どうして私が美術科に on 正弦工社</title>
+    <title>どうして私が美術科に！？ on 正弦工社</title>
     <link>https://Seigenkousya.github.io/tags/%E3%81%A9%E3%81%86%E3%81%97%E3%81%A6%E7%A7%81%E3%81%8C%E7%BE%8E%E8%A1%93%E7%A7%91%E3%81%AB/</link>
-    <description>Recent content in どうして私が美術科に on 正弦工社</description>
+    <description>Recent content in どうして私が美術科に！？ on 正弦工社</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>ja</language>
-    <lastBuildDate>Sat, 21 Dec 2019 23:40:35 +0900</lastBuildDate>
+    <lastBuildDate>Wed, 06 May 2020 01:07:03 +0900</lastBuildDate>
     
 	<atom:link href="https://Seigenkousya.github.io/tags/%E3%81%A9%E3%81%86%E3%81%97%E3%81%A6%E7%A7%81%E3%81%8C%E7%BE%8E%E8%A1%93%E7%A7%91%E3%81%AB/index.xml" rel="self" type="application/rss+xml" />
     
     
     <item>
+      <title>桃音ちゃんのお気持ちになって開発できるプログラミング言語&#34;kinako-chan&#34;を作った話</title>
+      <link>https://Seigenkousya.github.io/post/tech/kinako-chan/</link>
+      <pubDate>Wed, 06 May 2020 01:07:03 +0900</pubDate>
+      
+      <guid>https://Seigenkousya.github.io/post/tech/kinako-chan/</guid>
+      <description>はじめに この前TLでどうびじゅが完結して一周年だという話題が上がっていてもう一年経つのかという驚きと同時に 一年経っても未だに絵を書いてる人とか語っている人がいて同じどうびじゅが好きな人間として嬉しいなぁと感じます。
+真に素晴らしい作品は例え月日が流れてもファンの間で語り続けられるんだなぁと感動しました。 なんて希望のある事実でしょうか。
+感動しつつあれこれ考えながら過去のどうびじゅに関するツイートを色々見返していたんですがふとこんなツイートを見かけたんです。
+きららMAX1月号の大人気連載、相崎うたう先生の「どうして私が美術科に!?」！今回はタイポグラフィの課題ということで、初めてのPCルームにはしゃぐX室メンバーです。しかし桃音さん、そのデザインは……。コミックス第1巻好評発売中！（https://t.co/a2r7QMa2pB） pic.twitter.com/CVzkRQdXom
+&amp;mdash; まんがタイムきらら編集部 (@mangatimekirara) November 16, 2017  みなさんご存知2巻のタイポグラフィ回です。（予告絵のカーソルで桃音ちゃんのほっぺをもちもちしてるやつ好き）
+僕はその中のこのコマに着目しました。 そして僕は気がついてしまったのです&amp;hellip;
+もしもこの世に黄奈子ちゃんという言葉だけで構成されたプログラミング言語を開発したらこのコマの桃音ちゃんのお気持ちになってプログラムを書けるのでは？と。
+おそらくこの行を読んで9割の人間がブラウザバックしたと思うので残りの1割の方はそのまま聞いてください。
+だってしょうがないじゃないですか。そういう風に見えるんだもん。
+もう僕には桃音ちゃんがプログラマにしか見えません。
+僕だって桃音ちゃんがプログラムを書いてるところ見てみたいですよ。
+でも僕は絵は書けないし聖典である原作にコラージュなんて恐れ多いことはできない。
+なら現実を改変するしか無いじゃないですか。
+こうなったら仕方ない。作りましょう。黄奈子ちゃん言語。
+仕様策定 まずは言語仕様を決めましょう。（え？マジでやるの？とかいうツッコミは無しで）
+最初は黄,奈,子,ち,ゃ,んの六文字の組み合わせにしようかと思っていたのですが、そうするとあの絵面にはならないなぁと思ったのでこの案はボツにしました。
+唐突に&amp;#39;黄&amp;#39;, &amp;#39;奈&amp;#39;, &amp;#39;子&amp;#39;, &amp;#39;ち&amp;#39;, &amp;#39;ゃ&amp;#39;, &amp;#39;ん&amp;#39; の六文字を使ったプログラミング言語を開発したら桃音ちゃんをプログラマに仕立て上げることができるのでは？とひらめいてしまった
+&amp;mdash; 正弦工社 (@Seigenkousya) April 26, 2020  でもパターンを少なくすると今度はコードが以上に長くなって可読性が落ちるので「黄奈子ちゃん」という言葉と見た目の形はそのままに文字を微妙に変えて表現することにしました。
+さてどうやって言語を実装しようかと悩んでいたのですが、単純な言語実装として有名なbrainfuckをベースにすることにしました。1
+brainfuckは8個の命令からなる超小型のプログラミング言語です。大きな要素数を持ったuint8_t型の一次元配列とそれらの各要素を指すデータポインタによって構成されています。
+各命令はこんな感じです。
+   brainfuck 意味 C language     +  ポインタが指しているデータを1個増やす  (*ptr)++;   -  ポインタが指しているデータを1個減らす  (*ptr)&amp;ndash;;   &amp;gt;  ポインタを右に1個ずらす  ptr++;   &amp;lt;  ポインタを左に1個ずらす  ptr&amp;ndash;;   .</description>
+    </item>
+    
+    <item>
       <title>桃音ちゃんのAAの形をした桃音ちゃんのAAの形をした桃音ちゃんのAAの形をした...桃音ちゃんのAAを出力するプログラム</title>
-      <link>https://Seigenkousya.github.io/post/momone_aa/</link>
+      <link>https://Seigenkousya.github.io/post/tech/momone_aa/</link>
       <pubDate>Sat, 21 Dec 2019 23:40:35 +0900</pubDate>
       
-      <guid>https://Seigenkousya.github.io/post/momone_aa/</guid>
+      <guid>https://Seigenkousya.github.io/post/tech/momone_aa/</guid>
       <description>この記事は「まんがタイムきらら Advent Calendar 2019」の23日目の記事にして13日目のオマケ記事です。
 プログラムの見た目自体は変わってないので伝わり辛いでしょうがお付き合いください。
 前回のあらすじ 精神を病んで桃音ちゃん型のプログラムを書いた。
@@ -38,10 +68,10 @@ $ perl -E &#39;$_=q{print&amp;quot;\$_=q{$_};eval&amp;quot;};eval&#39; $_=q{prin
     
     <item>
       <title>世界一かわいいプログラムを書こう</title>
-      <link>https://Seigenkousya.github.io/post/momone_fizzbuzz/</link>
+      <link>https://Seigenkousya.github.io/post/tech/momone_fizzbuzz/</link>
       <pubDate>Fri, 06 Dec 2019 23:07:49 +0900</pubDate>
       
-      <guid>https://Seigenkousya.github.io/post/momone_fizzbuzz/</guid>
+      <guid>https://Seigenkousya.github.io/post/tech/momone_fizzbuzz/</guid>
       <description>この記事は「まんがタイムきらら Advent Calendar 2019」の13日目の記事です。
 注意 この記事の元となるプログラムは今年の2月のMAXの発売日の直後という僕史上最もメンタルがイカれていた時期に書かれたものです。
 狂気的な内容ではございますがお付き合いください。
