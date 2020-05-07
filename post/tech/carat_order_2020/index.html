@@ -70,25 +70,6 @@ if (!doNotTrack) {
 </script>
 
 		
-		<meta property="og:title" content="まんがタイムきららキャラットの掲載順を可視化・分析する2020" />
-<meta property="og:description" content="↑今回の成果
-はじめに この記事はおととい書いた「まんがタイムきららMAXの掲載順を可視化・分析する2020」の続きです。
-前回僕はこんなことを言いました。
- あと、今回のプログラムを流用してキャラット版のデータも準備運動2として作ろう。
- 見通しが甘かった&hellip;
-MAXのやつが意外と綺麗に書けたので浮かれていましたが、キャラットのデータ取得は地獄でした&hellip;
-特に地獄だったのは、
- MAXは&lt;font color=&quot;8000FF&quot;&gt;という非常に都合の良いタグに囲まれていたのでデータの取得がすっごい楽だったのですが、 キャラットは汎用的な&lt;li&gt;で囲われていてデータの特定が難しいものになってました。（絶望） MAXのページとキャラットのページを見比べてみてください。 今月の見どころの構成が全く違います。なんて恐ろしいのでしょう。センターカラーを取得するところは書き直しになりました。 2020年3月号と2020年4月号を 見比べてみてください。3月号は表紙と巻頭カラーの作品が違いますが、4月号は同じ作品が担当しています。つまり項目の数が違うのです&hellip;  の3つです。
-まぁつまりどういうことかと言うと書いたプログラムを書き換えるだけで取得できるでしょ（慢心）と思っていたら大幅な書き換えが必要な上、地獄のような取得方法が待ち受けていたってやつです。
-大変だった&hellip;（満身創痍）
-使用したプログラム リポジトリはここ。
- とりあえず使用したプログラムを示します。（プログラムに興味ない人は読み飛ばして結果と考察に飛んでください）
-#-*-coding:utf-8 -*- import re import regex import sys import requests import collections from bs4 import BeautifulSoup from time import sleep import numpy as np import matplotlib.pyplot as plt #input get_mid.py result here. mid_list=[&#39;644&#39;, &#39;648&#39;, &#39;652&#39;, &#39;656&#39;, &#39;660&#39;, &#39;664&#39;, &#39;668&#39;, &#39;672&#39;, &#39;676&#39;, &#39;680&#39;, &#39;684&#39;, &#39;688&#39;, &#39;692&#39;, &#39;696&#39;, &#39;700&#39;, &#39;704&#39;] month_list=[&#39;Jan." />
-<meta property="og:type" content="article" />
-<meta property="og:url" content="https://Seigenkousya.github.io/post/tech/carat_order_2020/" />
-<meta property="article:published_time" content="2020-03-16T19:40:40+09:00" />
-<meta property="article:modified_time" content="2020-03-16T19:40:40+09:00" />
-
 
 
 	</head>
