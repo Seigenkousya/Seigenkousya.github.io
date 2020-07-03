@@ -820,7 +820,8 @@ perlでいうとこう。
 $_=q{print&amp;#34;\$_=q{$_};eval&amp;#34;};eval 実際に確かめてみると、
 $ perl -E &#39;$_=q{print&amp;quot;\$_=q{$_};eval&amp;quot;};eval&#39; $_=q{print&amp;quot;\$_=q{$_};eval&amp;quot;};eval たしかに入力と出力が一致する。
 これは、
- 暗黙変数$_にq{print&amp;quot;\$\_=q{$_};eval&amp;quot;}を代入する   evalが実行される evalは暗黙的に$_を参照するのでq{print&amp;quot;\$_=q{$_};eval&amp;quot;}がevalに渡される q演算子q//より、文字列print&amp;quot;\$_=q{$_};eval&amp;quot;が渡されることになる evalに渡されるprint&amp;quot;\$_=q{$_};eval&amp;quot;のうち、エスケープされていないq{$_}の部分の$_は最初に代入したq{print&amp;quot;\$\_=q{$_};eval&amp;quot;}になるので 標準出力に$_=q{print&amp;quot;\$_=q{$_};eval&amp;quot;};evalが出力される  という流れで実行されるからです。</description>
+ 暗黙変数$_にq{print&amp;quot;\$\_=q{$_};eval&amp;quot;}を代入する evalが実行される evalは暗黙的に$_を参照するのでq{print&amp;quot;\$_=q{$_};eval&amp;quot;}がevalに渡される q演算子q//より、文字列print&amp;quot;\$_=q{$_};eval&amp;quot;が渡されることになる evalに渡されるprint&amp;quot;\$_=q{$_};eval&amp;quot;のうち、エスケープされていないq{$_}の部分の$_は最初に代入したq{print&amp;quot;\$\_=q{$_};eval&amp;quot;}になるので 標準出力に$_=q{print&amp;quot;\$_=q{$_};eval&amp;quot;};evalが出力される  という流れで実行されるからです。
+これらの実行の流れを見ているとあることに気がつきます。</description>
     </item>
     
     <item>

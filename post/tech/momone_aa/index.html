@@ -60,7 +60,8 @@ perlでいうとこう。
 $_=q{print&#34;\$_=q{$_};eval&#34;};eval 実際に確かめてみると、
 $ perl -E &#39;$_=q{print&quot;\$_=q{$_};eval&quot;};eval&#39; $_=q{print&quot;\$_=q{$_};eval&quot;};eval たしかに入力と出力が一致する。
 これは、
- 暗黙変数$_にq{print&quot;\$\_=q{$_};eval&quot;}を代入する   evalが実行される evalは暗黙的に$_を参照するのでq{print&quot;\$_=q{$_};eval&quot;}がevalに渡される q演算子q//より、文字列print&quot;\$_=q{$_};eval&quot;が渡されることになる evalに渡されるprint&quot;\$_=q{$_};eval&quot;のうち、エスケープされていないq{$_}の部分の$_は最初に代入したq{print&quot;\$\_=q{$_};eval&quot;}になるので 標準出力に$_=q{print&quot;\$_=q{$_};eval&quot;};evalが出力される  という流れで実行されるからです。"/>
+ 暗黙変数$_にq{print&quot;\$\_=q{$_};eval&quot;}を代入する evalが実行される evalは暗黙的に$_を参照するのでq{print&quot;\$_=q{$_};eval&quot;}がevalに渡される q演算子q//より、文字列print&quot;\$_=q{$_};eval&quot;が渡されることになる evalに渡されるprint&quot;\$_=q{$_};eval&quot;のうち、エスケープされていないq{$_}の部分の$_は最初に代入したq{print&quot;\$\_=q{$_};eval&quot;}になるので 標準出力に$_=q{print&quot;\$_=q{$_};eval&quot;};evalが出力される  という流れで実行されるからです。
+これらの実行の流れを見ているとあることに気がつきます。"/>
 		<meta name="twitter:site" content="@Seigenkousya" />
 		<meta name="twitter:creator" content="@Seigenkousya" />
 		
@@ -176,14 +177,12 @@ $_=q{print&quot;\$_=q{$_};eval&quot;};eval
 これは、</p>
 <ol>
 <li>暗黙変数$_に<code>q{print&quot;\$\_=q{$_};eval&quot;}</code>を代入する</li>
-</ol>
-<ul>
 <li>evalが実行される</li>
 <li>evalは暗黙的に<code>$_</code>を参照するので<code>q{print&quot;\$_=q{$_};eval&quot;}</code>がevalに渡される</li>
 <li>q演算子<code>q//</code>より、文字列<code>print&quot;\$_=q{$_};eval&quot;</code>が渡されることになる</li>
 <li>evalに渡される<code>print&quot;\$_=q{$_};eval&quot;</code>のうち、エスケープされていない<code>q{$_}</code>の部分の<code>$_</code>は最初に代入した<code>q{print&quot;\$\_=q{$_};eval&quot;}</code>になるので</li>
 <li>標準出力に<code>$_=q{print&quot;\$_=q{$_};eval&quot;};eval</code>が出力される</li>
-</ul>
+</ol>
 <p>という流れで実行されるからです。</p>
 <p>これらの実行の流れを見ているとあることに気がつきます。<br>
 それは、<code>print</code>命令の前に何を置いてもQuineとして成立するということです。<br>
