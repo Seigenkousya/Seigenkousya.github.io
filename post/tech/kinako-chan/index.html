@@ -34,7 +34,7 @@ MathJax.Hub.Config({
 
 
 <meta charset="utf-8" />
-		<meta name="generator" content="Hugo 0.74.3" />
+		<meta name="generator" content="Hugo 0.77.0" />
 		<meta name="viewport" content="width=device-width, initial-scale=1" />
 		<meta name="author" content="Takana Norimasa" />
 		<meta name="description" content="" />
@@ -178,49 +178,49 @@ if (!doNotTrack) {
 <table>
 <thead>
 <tr>
-<th align="center">brainfuck</th>
+<th style="text-align:center">brainfuck</th>
 <th>意味</th>
 <th>C language</th>
 </tr>
 </thead>
 <tbody>
 <tr>
-<td align="center">+</td>
+<td style="text-align:center">+</td>
 <td> ポインタが指しているデータを1個増やす</td>
 <td> (*ptr)++;</td>
 </tr>
 <tr>
-<td align="center">-</td>
+<td style="text-align:center">-</td>
 <td> ポインタが指しているデータを1個減らす</td>
 <td> (*ptr)&ndash;;</td>
 </tr>
 <tr>
-<td align="center">&gt;</td>
+<td style="text-align:center">&gt;</td>
 <td> ポインタを右に1個ずらす</td>
 <td> ptr++;</td>
 </tr>
 <tr>
-<td align="center">&lt;</td>
+<td style="text-align:center">&lt;</td>
 <td> ポインタを左に1個ずらす</td>
 <td> ptr&ndash;;</td>
 </tr>
 <tr>
-<td align="center">.</td>
+<td style="text-align:center">.</td>
 <td> ポインタが指しているデータを出力する</td>
 <td> putchar(*ptr);</td>
 </tr>
 <tr>
-<td align="center">,</td>
+<td style="text-align:center">,</td>
 <td> 入力をポインタが指しているデータに代入する</td>
 <td> *ptr=getchar();</td>
 </tr>
 <tr>
-<td align="center">[</td>
+<td style="text-align:center">[</td>
 <td> ポインタが0なら次の]の1個右にポインタを移動させる</td>
 <td> while(*ptr){</td>
 </tr>
 <tr>
-<td align="center">]</td>
+<td style="text-align:center">]</td>
 <td> ポインタが0でないなら前の[の1個右にポインタを移動させる</td>
 <td> }</td>
 </tr>
@@ -240,7 +240,7 @@ if (!doNotTrack) {
 <tr>
 <th>kinako-chan</th>
 <th>Meaning</th>
-<th align="center">brainfuck</th>
+<th style="text-align:center">brainfuck</th>
 <th>C language</th>
 </tr>
 </thead>
@@ -248,49 +248,49 @@ if (!doNotTrack) {
 <tr>
 <td>黄奈子ちゃん黄奈子ちゃん</td>
 <td> increment the data pointer</td>
-<td align="center">+</td>
+<td style="text-align:center">+</td>
 <td> (*ptr)++;</td>
 </tr>
 <tr>
 <td>黄奈子ちゃん黃奈子ちゃん</td>
 <td> decrement the data pointer</td>
-<td align="center">-</td>
+<td style="text-align:center">-</td>
 <td> (*ptr)&ndash;;</td>
 </tr>
 <tr>
 <td>黃奈子ちゃん黄奈子ちゃん</td>
 <td> increment the byte at the data pointer</td>
-<td align="center">&gt;</td>
+<td style="text-align:center">&gt;</td>
 <td> ptr++;</td>
 </tr>
 <tr>
 <td>黃奈子ちゃん黃奈子ちゃん</td>
 <td> decrement the byte at the data pointer</td>
-<td align="center">&lt;</td>
+<td style="text-align:center">&lt;</td>
 <td> ptr&ndash;;</td>
 </tr>
 <tr>
 <td>黃奈子ちゃん黄奈孑ちゃん</td>
 <td> output the byte at the data pointer</td>
-<td align="center">.</td>
+<td style="text-align:center">.</td>
 <td> putchar(*ptr);</td>
 </tr>
 <tr>
 <td>黃奈子ちゃん黃奈孑ちゃん</td>
 <td> accept one byte of input</td>
-<td align="center">,</td>
+<td style="text-align:center">,</td>
 <td> *ptr=getchar();</td>
 </tr>
 <tr>
 <td>黄奈子ちゃん黄奈孑ちゃん</td>
 <td> jump to &lsquo;黄奈孑ちゃん黄奈子ちゃん&rsquo; <br> if the byte at data pointer is zero</td>
-<td align="center">[</td>
+<td style="text-align:center">[</td>
 <td> while(*ptr){</td>
 </tr>
 <tr>
 <td>黄奈孑ちゃん黄奈子ちゃん</td>
 <td> jump to &lsquo;黄奈子ちゃん黄奈孑ちゃん&rsquo; <br> if the byte at data pointer is zero</td>
-<td align="center">]</td>
+<td style="text-align:center">]</td>
 <td> }</td>
 </tr>
 </tbody>
@@ -567,7 +567,7 @@ kinako-chanの内部システムでOS依存の処理だと考えられるのは�
 <p>最初に疑ったのは画面クリアの処理です。</p>
 <blockquote class="twitter-tweet"><p lang="ja" dir="ltr">フレームが残っているということは画面を正常にクリアできていないということである<br>エスケープシーケンスまわりが原因か？<br>brainwash: std::system(&quot;clear&quot;)<br>kinako-chan: L&quot;\033c&quot;</p>&mdash; 正弦工社 (@Seigenkousya) <a href="https://twitter.com/Seigenkousya/status/1258042071874592770?ref_src=twsrc%5Etfw">May 6, 2020</a></blockquote> <script async src="https://platform.twitter.com/widgets.js" charset="utf-8"></script>  
 <p>上手く表示ができないならちゃんと画面をクリアできてないのではと考えました。<br>
-実際、画面消去に使っていたエスケープシーケンスである&rdquo;\033c&quot;はKDEのコンソールで動かない問題があったのですが、直接の原因ではありませんでした。<br>
+実際、画面消去に使っていたエスケープシーケンスである&quot;\033c&quot;はKDEのコンソールで動かない問題があったのですが、直接の原因ではありませんでした。<br>
 結局ここで多くの画面消去法を試してみましたが結局確かめようが無いので色々考えていました。<br>
 そして遂にひらめきました。</p>
 <blockquote class="twitter-tweet"><p lang="ja" dir="ltr">分かった！（超速理解）<br>ターミナルのsetlocaleがmacとlinuxで違う（多分）から2byte文字に入る最初の「黄奈子ちゃん」で躓いて止まるんだ</p>&mdash; 正弦工社 (@Seigenkousya) <a href="https://twitter.com/Seigenkousya/status/1258068408714715137?ref_src=twsrc%5Etfw">May 6, 2020</a></blockquote> <script async src="https://platform.twitter.com/widgets.js" charset="utf-8"></script>  
