@@ -34,7 +34,7 @@ MathJax.Hub.Config({
 
 
 <meta charset="utf-8" />
-		<meta name="generator" content="Hugo 0.77.0" />
+		<meta name="generator" content="Hugo 0.88.1" />
 		<meta name="viewport" content="width=device-width, initial-scale=1" />
 		<meta name="author" content="Takana Norimasa" />
 		<meta name="description" content="" />
@@ -76,7 +76,6 @@ if (!doNotTrack) {
 	ga('send', 'pageview');
 }
 </script>
-
 		
 
 	</head>
@@ -152,7 +151,7 @@ if (!doNotTrack) {
 この記事を見てやってみたいって思った人がいたら、やり方とか注意事項とか書いてあるので最初に貼ったリンクを読んでね。</p>
 <h3 id="環境">環境</h3>
 <p>実行環境はこちら。</p>
-<pre><code class="language-terminal" data-lang="terminal">$ uname -a                                                                                                                              
+<pre tabindex="0"><code class="language-terminal" data-lang="terminal">$ uname -a                                                                                                                              
 Linux kali 4.18.0-kali2-amd64 #1 SMP Debian 4.18.10-2kali1 (2018-10-09) x86_64 GNU/Linux
 
 $ python3 --version                                                                                                                             
@@ -189,14 +188,14 @@ Version: 3.0.4
 <p>のだいたい3つです。<br>
 <del>ちょっとずつサイトが変わっているので変えなくちゃいけない（めんどくさい）</del></p>
 <p>使用したプログラムは以下。</p>
-<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-python3" data-lang="python3"><span style="color:#75715e">#-*-coding:utf-8 -*-</span>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-python3" data-lang="python3"><span style="color:#75715e">#-*-coding:utf-8 -*-</span>
 <span style="color:#f92672">import</span> re
 <span style="color:#f92672">import</span> regex
 <span style="color:#f92672">import</span> sys
 <span style="color:#f92672">import</span> requests
 <span style="color:#f92672">import</span> collections
-<span style="color:#f92672">from</span> bs4 <span style="color:#66d9ef">import</span> BeautifulSoup
-<span style="color:#f92672">from</span> time <span style="color:#66d9ef">import</span> sleep
+<span style="color:#f92672">from</span> bs4 <span style="color:#f92672">import</span> BeautifulSoup
+<span style="color:#f92672">from</span> time <span style="color:#f92672">import</span> sleep
 <span style="color:#f92672">import</span> numpy <span style="color:#66d9ef">as</span> np
 <span style="color:#f92672">import</span> matplotlib.pyplot <span style="color:#66d9ef">as</span> plt
 
@@ -216,7 +215,7 @@ date_list<span style="color:#f92672">=</span>[]
 date_place<span style="color:#f92672">=</span>[]
 
 <span style="color:#66d9ef">class</span> <span style="color:#a6e22e">Article</span>:
-    <span style="color:#66d9ef">def</span> <span style="color:#a6e22e">__init__</span>(self,_label,_keyword):
+    <span style="color:#66d9ef">def</span> __init__(self,_label,_keyword):
         self<span style="color:#f92672">.</span>label<span style="color:#f92672">=</span>_label
         self<span style="color:#f92672">.</span>keyword<span style="color:#f92672">=</span>_keyword
         self<span style="color:#f92672">.</span>list<span style="color:#f92672">=</span>[]
@@ -324,12 +323,12 @@ plt<span style="color:#f92672">.</span>show()
 midなるものが必要なのだがこれは予め取得して配列に格納することにしてる。<br>
 いちいち取りに行くのは無駄だし、サーバに負荷がかかるのでよろしくない。<br>
 midを取りに行くコードはこちら。</p>
-<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-python3" data-lang="python3"><span style="color:#75715e">#-*-coding:utf-8 -*-</span>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-python3" data-lang="python3"><span style="color:#75715e">#-*-coding:utf-8 -*-</span>
 <span style="color:#f92672">import</span> sys
 <span style="color:#f92672">import</span> requests
 <span style="color:#f92672">import</span> re
-<span style="color:#f92672">from</span> bs4 <span style="color:#66d9ef">import</span> BeautifulSoup
-<span style="color:#f92672">from</span> time <span style="color:#66d9ef">import</span> sleep
+<span style="color:#f92672">from</span> bs4 <span style="color:#f92672">import</span> BeautifulSoup
+<span style="color:#f92672">from</span> time <span style="color:#f92672">import</span> sleep
 
 year<span style="color:#f92672">=</span><span style="color:#ae81ff">2019</span>
 mid_list<span style="color:#f92672">=</span>[]

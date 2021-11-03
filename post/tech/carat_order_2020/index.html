@@ -34,7 +34,7 @@ MathJax.Hub.Config({
 
 
 <meta charset="utf-8" />
-		<meta name="generator" content="Hugo 0.77.0" />
+		<meta name="generator" content="Hugo 0.88.1" />
 		<meta name="viewport" content="width=device-width, initial-scale=1" />
 		<meta name="author" content="Takana Norimasa" />
 		<meta name="description" content="" />
@@ -78,7 +78,6 @@ if (!doNotTrack) {
 	ga('send', 'pageview');
 }
 </script>
-
 		
 
 	</head>
@@ -165,7 +164,7 @@ MAXのやつが意外と綺麗に書けたので浮かれていましたが、�
 <p>リポジトリはここ。</p>
 <div class="iframely-embed"><div class="iframely-responsive" style="height: 140px; width:600px; padding-bottom: 0;"><a href="https://github.com/Seigenkousya/kirara_scraper" data-iframely-url="//cdn.iframe.ly/api/iframe?url=https%3A%2F%2Fgithub.com%2FSeigenkousya%2Fkirara_scraper&key=dd60c159c87f40f1ecca839b51b281e8"></a></div></div><script async src="https://cdn.iframe.ly/embed.js" charset="utf-8"></script>
 <p>とりあえず使用したプログラムを示します。（プログラムに興味ない人は読み飛ばして結果と考察に飛んでください）</p>
-<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-python" data-lang="python"><span style="color:#75715e">#-*-coding:utf-8 -*-</span>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-python" data-lang="python"><span style="color:#75715e">#-*-coding:utf-8 -*-</span>
 <span style="color:#f92672">import</span> re
 <span style="color:#f92672">import</span> regex
 <span style="color:#f92672">import</span> sys
@@ -173,8 +172,8 @@ MAXのやつが意外と綺麗に書けたので浮かれていましたが、�
 <span style="color:#f92672">import</span> collections
 <span style="color:#f92672">from</span> bs4 <span style="color:#f92672">import</span> BeautifulSoup
 <span style="color:#f92672">from</span> time <span style="color:#f92672">import</span> sleep
-<span style="color:#f92672">import</span> numpy <span style="color:#f92672">as</span> np
-<span style="color:#f92672">import</span> matplotlib.pyplot <span style="color:#f92672">as</span> plt
+<span style="color:#f92672">import</span> numpy <span style="color:#66d9ef">as</span> np
+<span style="color:#f92672">import</span> matplotlib.pyplot <span style="color:#66d9ef">as</span> plt
 
 <span style="color:#75715e">#input get_mid.py result here.</span>
 mid_list<span style="color:#f92672">=</span>[<span style="color:#e6db74">&#39;644&#39;</span>, <span style="color:#e6db74">&#39;648&#39;</span>, <span style="color:#e6db74">&#39;652&#39;</span>, <span style="color:#e6db74">&#39;656&#39;</span>, <span style="color:#e6db74">&#39;660&#39;</span>, <span style="color:#e6db74">&#39;664&#39;</span>, <span style="color:#e6db74">&#39;668&#39;</span>, <span style="color:#e6db74">&#39;672&#39;</span>, <span style="color:#e6db74">&#39;676&#39;</span>, <span style="color:#e6db74">&#39;680&#39;</span>, <span style="color:#e6db74">&#39;684&#39;</span>, <span style="color:#e6db74">&#39;688&#39;</span>, <span style="color:#e6db74">&#39;692&#39;</span>, <span style="color:#e6db74">&#39;696&#39;</span>, <span style="color:#e6db74">&#39;700&#39;</span>, <span style="color:#e6db74">&#39;704&#39;</span>]
@@ -206,10 +205,10 @@ date_place<span style="color:#f92672">=</span>[]
         self<span style="color:#f92672">.</span>center_list<span style="color:#f92672">=</span>[]
 
     <span style="color:#66d9ef">def</span> <span style="color:#a6e22e">is_centercolor</span>(self,center_colors):
-        flag<span style="color:#f92672">=</span>False
+        flag<span style="color:#f92672">=</span><span style="color:#66d9ef">False</span>
         <span style="color:#66d9ef">for</span> cc <span style="color:#f92672">in</span> center_colors:
             <span style="color:#66d9ef">if</span> self<span style="color:#f92672">.</span>keyword <span style="color:#f92672">in</span> cc:
-                flag<span style="color:#f92672">=</span>True
+                flag<span style="color:#f92672">=</span><span style="color:#66d9ef">True</span>
                 <span style="color:#66d9ef">break</span>
         
         self<span style="color:#f92672">.</span>center_list<span style="color:#f92672">.</span>append(flag)
@@ -228,12 +227,12 @@ Article_list<span style="color:#f92672">=</span>[  Article(<span style="color:#e
 
 <span style="color:#66d9ef">while</span> index <span style="color:#f92672">&lt;</span> len(mid_list):
 
-    <span style="color:#66d9ef">print</span> (<span style="color:#e6db74">&#34;</span><span style="color:#ae81ff">\n</span><span style="color:#e6db74">{}年{}月号&#34;</span><span style="color:#f92672">.</span>format(year,month))
+    print (<span style="color:#e6db74">&#34;</span><span style="color:#ae81ff">\n</span><span style="color:#e6db74">{}</span><span style="color:#e6db74">年</span><span style="color:#e6db74">{}</span><span style="color:#e6db74">月号&#34;</span><span style="color:#f92672">.</span>format(year,month))
     
     date_list<span style="color:#f92672">.</span>append(str(year)<span style="color:#f92672">+</span><span style="color:#e6db74">&#34;</span><span style="color:#ae81ff">\n</span><span style="color:#e6db74">&#34;</span><span style="color:#f92672">+</span>month_list[month<span style="color:#f92672">-</span><span style="color:#ae81ff">1</span>]);
     date_place<span style="color:#f92672">.</span>append(index)
 
-    url<span style="color:#f92672">=</span><span style="color:#e6db74">&#39;http://www.dokidokivisual.com/magazine/carat/book/index.php?mid={0}&#39;</span><span style="color:#f92672">.</span>format(mid_list[index])
+    url<span style="color:#f92672">=</span><span style="color:#e6db74">&#39;http://www.dokidokivisual.com/magazine/carat/book/index.php?mid=</span><span style="color:#e6db74">{0}</span><span style="color:#e6db74">&#39;</span><span style="color:#f92672">.</span>format(mid_list[index])
     html<span style="color:#f92672">=</span>requests<span style="color:#f92672">.</span>get(url)
 
     source<span style="color:#f92672">=</span>BeautifulSoup(html<span style="color:#f92672">.</span>content,<span style="color:#e6db74">&#34;html.parser&#34;</span>)
@@ -245,11 +244,11 @@ Article_list<span style="color:#f92672">=</span>[  Article(<span style="color:#e
     strongs<span style="color:#f92672">=</span>info<span style="color:#f92672">.</span>find_all(<span style="color:#e6db74">&#34;strong&#34;</span>)
 
     <span style="color:#66d9ef">if</span> re<span style="color:#f92672">.</span>search(<span style="color:#e6db74">&#39;表紙(&amp;|＆)巻頭カラー&#39;</span>,info<span style="color:#f92672">.</span>text):
-        <span style="color:#66d9ef">print</span>(<span style="color:#e6db74">&#34;both&#34;</span>)
+        print(<span style="color:#e6db74">&#34;both&#34;</span>)
         start<span style="color:#f92672">=</span><span style="color:#ae81ff">0</span>
         end<span style="color:#f92672">=</span><span style="color:#ae81ff">5</span>
     <span style="color:#66d9ef">else</span>:
-        <span style="color:#66d9ef">print</span>(<span style="color:#e6db74">&#34;other&#34;</span>)
+        print(<span style="color:#e6db74">&#34;other&#34;</span>)
         start<span style="color:#f92672">=</span><span style="color:#ae81ff">1</span>
         end<span style="color:#f92672">=</span><span style="color:#ae81ff">6</span>
 
@@ -258,7 +257,7 @@ Article_list<span style="color:#f92672">=</span>[  Article(<span style="color:#e
         center_colors<span style="color:#f92672">.</span>append(re<span style="color:#f92672">.</span>search(<span style="color:#e6db74">&#39;「.+」&#39;</span>,art<span style="color:#f92672">.</span>string)<span style="color:#f92672">.</span>group())
         center_color_all<span style="color:#f92672">.</span>append(center_colors[<span style="color:#f92672">-</span><span style="color:#ae81ff">1</span>])
 
-    <span style="color:#66d9ef">print</span>(center_colors)
+    print(center_colors)
 
     i<span style="color:#f92672">=</span><span style="color:#ae81ff">0</span>
     articles<span style="color:#f92672">=</span>source<span style="color:#f92672">.</span>find(<span style="color:#e6db74">&#34;ul&#34;</span>,class_<span style="color:#f92672">=</span><span style="color:#e6db74">&#34;lineup&#34;</span>)<span style="color:#f92672">.</span>find_all(<span style="color:#e6db74">&#34;strong&#34;</span>)
@@ -267,7 +266,7 @@ Article_list<span style="color:#f92672">=</span>[  Article(<span style="color:#e
             i<span style="color:#f92672">+=</span><span style="color:#ae81ff">1</span>
             name<span style="color:#f92672">=</span>art<span style="color:#f92672">.</span>string
             
-            <span style="color:#66d9ef">print</span>(i,name)
+            print(i,name)
 
             <span style="color:#66d9ef">for</span> color_index,art <span style="color:#f92672">in</span> enumerate(Article_list):
                 <span style="color:#66d9ef">if</span> art<span style="color:#f92672">.</span>keyword <span style="color:#f92672">in</span> name <span style="color:#f92672">and</span> len(art<span style="color:#f92672">.</span>list)<span style="color:#f92672">==</span>index:
@@ -282,8 +281,8 @@ Article_list<span style="color:#f92672">=</span>[  Article(<span style="color:#e
 
     <span style="color:#66d9ef">for</span> art <span style="color:#f92672">in</span> Article_list:
         <span style="color:#66d9ef">if</span> len(art<span style="color:#f92672">.</span>list)<span style="color:#f92672">==</span>index:
-            art<span style="color:#f92672">.</span>list<span style="color:#f92672">.</span>append(None)
-            art<span style="color:#f92672">.</span>center_list<span style="color:#f92672">.</span>append(None)
+            art<span style="color:#f92672">.</span>list<span style="color:#f92672">.</span>append(<span style="color:#66d9ef">None</span>)
+            art<span style="color:#f92672">.</span>center_list<span style="color:#f92672">.</span>append(<span style="color:#66d9ef">None</span>)
 
     index<span style="color:#f92672">+=</span><span style="color:#ae81ff">1</span>
 
@@ -295,12 +294,12 @@ Article_list<span style="color:#f92672">=</span>[  Article(<span style="color:#e
 
     sleep(<span style="color:#ae81ff">1</span>)
 
-<span style="color:#66d9ef">print</span>(collections<span style="color:#f92672">.</span>Counter(center_color_all))
+print(collections<span style="color:#f92672">.</span>Counter(center_color_all))
 
 <span style="color:#66d9ef">for</span> art <span style="color:#f92672">in</span> Article_list:
-    <span style="color:#66d9ef">print</span>(art<span style="color:#f92672">.</span>label)
-    <span style="color:#66d9ef">print</span>(art<span style="color:#f92672">.</span>list)
-    <span style="color:#66d9ef">print</span>(art<span style="color:#f92672">.</span>center_list)
+    print(art<span style="color:#f92672">.</span>label)
+    print(art<span style="color:#f92672">.</span>list)
+    print(art<span style="color:#f92672">.</span>center_list)
 
 X_list<span style="color:#f92672">=</span>list(range(len(mid_list)))
 plt<span style="color:#f92672">.</span>xlabel(<span style="color:#e6db74">&#39;Publication issue&#39;</span>)
@@ -322,13 +321,13 @@ plt<span style="color:#f92672">.</span>yticks(range(<span style="color:#ae81ff">
 plt<span style="color:#f92672">.</span>show()
 </code></pre></div><h3 id="解説">解説</h3>
 <p>表紙と巻頭カラーが一緒かどうかは単純に正規表現で解決しました。</p>
-<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-python" data-lang="python"><span style="color:#66d9ef">if</span> re<span style="color:#f92672">.</span>search(<span style="color:#e6db74">&#39;表紙(&amp;|＆)巻頭カラー&#39;</span>,info<span style="color:#f92672">.</span>text):
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-python" data-lang="python"><span style="color:#66d9ef">if</span> re<span style="color:#f92672">.</span>search(<span style="color:#e6db74">&#39;表紙(&amp;|＆)巻頭カラー&#39;</span>,info<span style="color:#f92672">.</span>text):
 </code></pre></div><p>今回のポイントはbeautifulsoup4での要素の取得。<br>
 前回は単純にタグ名を指定して全部を配列にして取得していたけど今回は一度classを指定してからそのクラスの中の任意の要素を指定して再検索する方法にしました。<br>
 この方法ができるようになったのはでかい。<br>
 beautifulsoup4のclassはTagとResult.setの2つがあって扱いが違うので結構大変でした。<br>
 同じ配列系でもアクセスの仕方が違うし&hellip;</p>
-<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-python" data-lang="python">info<span style="color:#f92672">=</span>(source<span style="color:#f92672">.</span>find_all(<span style="color:#e6db74">&#34;div&#34;</span>,class_<span style="color:#f92672">=</span><span style="color:#e6db74">&#34;info&#34;</span>))[<span style="color:#ae81ff">1</span>]
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-python" data-lang="python">info<span style="color:#f92672">=</span>(source<span style="color:#f92672">.</span>find_all(<span style="color:#e6db74">&#34;div&#34;</span>,class_<span style="color:#f92672">=</span><span style="color:#e6db74">&#34;info&#34;</span>))[<span style="color:#ae81ff">1</span>]
 strongs<span style="color:#f92672">=</span>info<span style="color:#f92672">.</span>find_all(<span style="color:#e6db74">&#34;strong&#34;</span>)
 </code></pre></div><p>それから、前回示したグラフには地味に大きな問題があって独立したデータはグラフに描写されないという問題点を抱えていました。<br>
 たとえば、3月号と5月号が休載だった場合、4月号の掲載順は表示されません。<br>
@@ -336,12 +335,12 @@ strongs<span style="color:#f92672">=</span>info<span style="color:#f92672">.</sp
 独立したデータが見えないことに気がついたのです。（点と点を結んで線にしたときに初めて見える）<br>
 ただし、マーカーの種類は1種類しか指定できません。困りました。<br>
 そこで、以下のように全部の点に小さい点をプロットして、センターカラーのときはその上から新しく点をプロットすることにしました。</p>
-<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-python" data-lang="python"><span style="color:#66d9ef">for</span> art <span style="color:#f92672">in</span> Article_list:
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-python" data-lang="python"><span style="color:#66d9ef">for</span> art <span style="color:#f92672">in</span> Article_list:
     plt<span style="color:#f92672">.</span>plot(X_list, art<span style="color:#f92672">.</span>list, linestyle<span style="color:#f92672">=</span><span style="color:#e6db74">&#39;solid&#39;</span>, marker<span style="color:#f92672">=</span><span style="color:#e6db74">&#34;.&#34;</span>, label<span style="color:#f92672">=</span>art<span style="color:#f92672">.</span>label)
 <span style="color:#66d9ef">for</span> _x,_y,_color <span style="color:#f92672">in</span> zip(mark_point_x,mark_point_y,mark_point_color):
     plt<span style="color:#f92672">.</span>plot(_x, _y, linestyle<span style="color:#f92672">=</span><span style="color:#e6db74">&#39;none&#39;</span>, marker<span style="color:#f92672">=</span><span style="color:#e6db74">&#39;D&#39;</span>, color<span style="color:#f92672">=</span>_color)
 </code></pre></div><p>マークする点はまとめて1つの配列に入れて後から色を指定して区別を付けました。</p>
-<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-python" data-lang="python">color_cycle <span style="color:#f92672">=</span> plt<span style="color:#f92672">.</span>rcParams[<span style="color:#e6db74">&#39;axes.prop_cycle&#39;</span>]<span style="color:#f92672">.</span>by_key()[<span style="color:#e6db74">&#39;color&#39;</span>]
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-python" data-lang="python">color_cycle <span style="color:#f92672">=</span> plt<span style="color:#f92672">.</span>rcParams[<span style="color:#e6db74">&#39;axes.prop_cycle&#39;</span>]<span style="color:#f92672">.</span>by_key()[<span style="color:#e6db74">&#39;color&#39;</span>]
 <span style="color:#66d9ef">if</span> art<span style="color:#f92672">.</span>is_centercolor(center_colors):
 	mark_point_x<span style="color:#f92672">.</span>append(index)
 	mark_point_y<span style="color:#f92672">.</span>append(i)

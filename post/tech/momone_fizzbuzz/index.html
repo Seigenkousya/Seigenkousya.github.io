@@ -34,7 +34,7 @@ MathJax.Hub.Config({
 
 
 <meta charset="utf-8" />
-		<meta name="generator" content="Hugo 0.77.0" />
+		<meta name="generator" content="Hugo 0.88.1" />
 		<meta name="viewport" content="width=device-width, initial-scale=1" />
 		<meta name="author" content="Takana Norimasa" />
 		<meta name="description" content="" />
@@ -94,7 +94,6 @@ if (!doNotTrack) {
 	ga('send', 'pageview');
 }
 </script>
-
 		
 
 	</head>
@@ -193,7 +192,7 @@ if (!doNotTrack) {
 どうびじゅについて語ると世界中のリソースを使い尽くしても語りきれないので省略しますが、賢明な読者諸氏なら既にご存知でしょう。</p>
 <h3 id="環境">環境</h3>
 <p>一応技術記事らしく。</p>
-<pre><code class="language-terminal" data-lang="terminal">$ uname -a
+<pre tabindex="0"><code class="language-terminal" data-lang="terminal">$ uname -a
 Linux kali 4.18.0-kali2-amd64 #1 SMP Debian 4.18.10-2kali1 (2018-10-09) x86_64 GNU/Linux
 $ perl --version
 This is perl 5, version 28, subversion 1 (v5.28.1) built for x86_64-linux-gnu-thread-multi
@@ -202,7 +201,7 @@ This is perl 5, version 28, subversion 1 (v5.28.1) built for x86_64-linux-gnu-th
 <p>プログラマの技能の基本とも言えるFizzBuzzにしましょう。<br>
 FizzBuzzというのは数字を順に羅列していって、もし3で割りきれるなら数字の代わりにFizzもし5で割りきれるなら数字の代わりにBizzそれ以外ならそのまま数字を表示する簡単なプログラムです。<br>
 表示例はこんな感じ。</p>
-<pre><code>1
+<pre tabindex="0"><code>1
 2
 Fizz　（3は3の倍数）
 4
@@ -223,7 +222,7 @@ Fizz
 19
 Buzz
 </code></pre><p>これらの処理を愚直に書くとこうなります。<del>めちゃくちゃ愚直だなぁ</del></p>
-<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-perl" data-lang="perl"><span style="color:#75715e">#!/bin/perl</span>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-perl" data-lang="perl"><span style="color:#75715e">#!/bin/perl</span>
 
 <span style="color:#66d9ef">use</span> strict;
 <span style="color:#66d9ef">use</span> warnings;
@@ -244,7 +243,7 @@ Buzz
 	}
 }
 </code></pre></div><p>これらを限界まで短くしていきます。</p>
-<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-perl" data-lang="perl"><span style="color:#66d9ef">for</span>(<span style="color:#ae81ff">1</span><span style="color:#f92672">..</span><span style="color:#ae81ff">100</span>){
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-perl" data-lang="perl"><span style="color:#66d9ef">for</span>(<span style="color:#ae81ff">1</span><span style="color:#f92672">..</span><span style="color:#ae81ff">100</span>){
 	<span style="color:#66d9ef">if</span>(<span style="color:#f92672">!</span>($_%3)){
 		<span style="color:#66d9ef">print</span>(<span style="color:#e6db74">&#34;Fizz&#34;</span>);
 	}<span style="color:#66d9ef">elsif</span>(<span style="color:#f92672">!</span>($_%5)){
@@ -256,11 +255,11 @@ Buzz
 }
 </code></pre></div><p>とりあえず余計な宣言とか処理をすべて排除します。</p>
 <p>そして後置forや三項演算子を使って限界までコードを切り詰めます。</p>
-<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-perl" data-lang="perl"><span style="color:#66d9ef">print</span>(($_%3?<span style="color:#e6db74">&#34;&#34;</span>:Fizz)<span style="color:#f92672">.</span>($_%5?<span style="color:#e6db74">&#34;&#34;</span>:Buzz)<span style="color:#f92672">or</span>$_)<span style="color:#66d9ef">for</span> <span style="color:#ae81ff">1</span><span style="color:#f92672">..</span><span style="color:#ae81ff">100</span>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-perl" data-lang="perl"><span style="color:#66d9ef">print</span>(($_%3?<span style="color:#e6db74">&#34;&#34;</span>:Fizz)<span style="color:#f92672">.</span>($_%5?<span style="color:#e6db74">&#34;&#34;</span>:Buzz)<span style="color:#f92672">or</span>$_)<span style="color:#66d9ef">for</span> <span style="color:#ae81ff">1</span><span style="color:#f92672">..</span><span style="color:#ae81ff">100</span>
 </code></pre></div><p>だいぶ小さくなりました。<br>
 これらをコンパイルの通る最小単位に分割します。
 最小単位に分割することでAAに混ぜても違和感が無いようにします。</p>
-<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-perl" data-lang="perl"><span style="color:#66d9ef">print</span>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-perl" data-lang="perl"><span style="color:#66d9ef">print</span>
 (
 	(
 		$_
@@ -300,7 +299,7 @@ Buzz
 <img src="/images/1_momone_FizzBuzz.png" alt="momone_FizzBuzz">
 か゛わ゛い゛い゛な゛ぁ゛桃゛音゛ち゛ゃ゛ん゛<br>
 プログラムとして実行すると実行結果は無論こうなりちゃんと動いていることが確認できます。</p>
-<pre><code>1
+<pre tabindex="0"><code>1
 2
 Fizz
 4
@@ -344,13 +343,13 @@ Buzz
 <hr>
 <ol>
 <li id="fn:1" role="doc-endnote">
-<p>今は相崎先生の新作である「月が綺麗だから盗んで」の読み切りが載ったので比較的精神が安定してます。 <a href="#fnref:1" class="footnote-backref" role="doc-backlink">&#x21a9;&#xfe0e;</a></p>
+<p>今は相崎先生の新作である「月が綺麗だから盗んで」の読み切りが載ったので比較的精神が安定してます。&#160;<a href="#fnref:1" class="footnote-backref" role="doc-backlink">&#x21a9;&#xfe0e;</a></p>
 </li>
 <li id="fn:2" role="doc-endnote">
-<p>どうびじゅは僕の人生です。<a href="https://www.amazon.co.jp/dp/B06XFYK4PN/ref=dp-kindle-redirect?_encoding=UTF8&amp;btkr=1">Amazonのリンク</a> <a href="#fnref:2" class="footnote-backref" role="doc-backlink">&#x21a9;&#xfe0e;</a></p>
+<p>どうびじゅは僕の人生です。<a href="https://www.amazon.co.jp/dp/B06XFYK4PN/ref=dp-kindle-redirect?_encoding=UTF8&amp;btkr=1">Amazonのリンク</a>&#160;<a href="#fnref:2" class="footnote-backref" role="doc-backlink">&#x21a9;&#xfe0e;</a></p>
 </li>
 <li id="fn:3" role="doc-endnote">
-<p>単純に個人レベルで書き捨てるなら自由度が高く書きやすいからかなぁ <a href="#fnref:3" class="footnote-backref" role="doc-backlink">&#x21a9;&#xfe0e;</a></p>
+<p>単純に個人レベルで書き捨てるなら自由度が高く書きやすいからかなぁ&#160;<a href="#fnref:3" class="footnote-backref" role="doc-backlink">&#x21a9;&#xfe0e;</a></p>
 </li>
 </ol>
 </section>

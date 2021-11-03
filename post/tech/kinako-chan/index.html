@@ -34,7 +34,7 @@ MathJax.Hub.Config({
 
 
 <meta charset="utf-8" />
-		<meta name="generator" content="Hugo 0.77.0" />
+		<meta name="generator" content="Hugo 0.88.1" />
 		<meta name="viewport" content="width=device-width, initial-scale=1" />
 		<meta name="author" content="Takana Norimasa" />
 		<meta name="description" content="" />
@@ -87,7 +87,6 @@ if (!doNotTrack) {
 	ga('send', 'pageview');
 }
 </script>
-
 		
 
 	</head>
@@ -315,7 +314,7 @@ if (!doNotTrack) {
 Unix初心者から中級者くらいですかね。<br>
 OSはLinuxとMacに対応しています。<del>（Macの方は確認待ちだけど）</del><br>
 まずインストールにはgitを使います。</p>
-<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-zsh" data-lang="zsh">$ git clone  https://github.com/Seigenkousya/kinako-chan.git
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-zsh" data-lang="zsh">$ git clone  https://github.com/Seigenkousya/kinako-chan.git
 
 Cloning into <span style="color:#e6db74">&#39;kinako-chan&#39;</span>...
 remote: Enumerating objects: 132, <span style="color:#66d9ef">done</span>.
@@ -325,9 +324,9 @@ remote: Total <span style="color:#ae81ff">409</span> <span style="color:#f92672"
 Receiving objects: 100% <span style="color:#f92672">(</span>409/409<span style="color:#f92672">)</span>, 301.91 KiB | 640.00 KiB/s, <span style="color:#66d9ef">done</span>.
 Resolving deltas: 100% <span style="color:#f92672">(</span>243/243<span style="color:#f92672">)</span>, <span style="color:#66d9ef">done</span>.
 </code></pre></div><p>kinako-chanというディレクトリができるので移動します。</p>
-<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-zsh" data-lang="zsh">$ cd kinako-chan/
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-zsh" data-lang="zsh">$ cd kinako-chan/
 </code></pre></div><p>最後にmakeしてインストールします。</p>
-<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-zsh" data-lang="zsh">$ make install 
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-zsh" data-lang="zsh">$ make install 
 
 g++ -g -O0 -I./include -o src/obj/display.o -c src/display.cpp
 g++ -g -O0 -I./include -o src/obj/code_check.o -c src/code_check.cpp
@@ -336,15 +335,15 @@ g++ -g -O0 -I./include -o src/obj/process.o -c src/process.cpp
 g++ -O2 -o ./kinako-chan src/obj/display.o src/obj/code_check.o src/obj/main.o src/obj/process.o
 </code></pre></div><p>これでkinako-chanというファイルができたらOKです。<br>
 サンプルとしてexample.knkというファイルがあるので試しに実行してみましょう。</p>
-<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-zsh" data-lang="zsh">$ ./kinako-chan example.knk
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-zsh" data-lang="zsh">$ ./kinako-chan example.knk
 </code></pre></div><p>動いたでしょうか？ビジュアライズされて表示されたかと思います。<br>
 でもいつもこれだと時間がかかります。<br>
 結果だけ欲しいときは以下のようにします。</p>
-<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-zsh" data-lang="zsh">$ ./kinako-chan -n example.knk
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-zsh" data-lang="zsh">$ ./kinako-chan -n example.knk
 </code></pre></div><h3 id="hello-world">hello world</h3>
 <p>hello worldをやってみましょう。
 hello worldは以下のように書きます。</p>
-<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-zsh" data-lang="zsh">黄奈子ちゃん黄奈子ちゃん黄奈子ちゃん黄奈子ちゃん黄奈子ちゃん黄奈子ちゃん黄奈子ちゃん黄奈子ちゃん黄奈子ちゃん黄奈子ちゃん
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-zsh" data-lang="zsh">黄奈子ちゃん黄奈子ちゃん黄奈子ちゃん黄奈子ちゃん黄奈子ちゃん黄奈子ちゃん黄奈子ちゃん黄奈子ちゃん黄奈子ちゃん黄奈子ちゃん
 黄奈子ちゃん黄奈子ちゃん黄奈子ちゃん黄奈子ちゃん黄奈子ちゃん黄奈子ちゃん黄奈子ちゃん黄奈子ちゃん黄奈子ちゃん黄奈孑ちゃん
 黃奈子ちゃん黄奈子ちゃん黄奈子ちゃん黄奈子ちゃん黄奈子ちゃん黄奈子ちゃん黄奈子ちゃん黄奈子ちゃん黄奈子ちゃん黄奈子ちゃん
 黄奈子ちゃん黄奈子ちゃん黄奈子ちゃん黄奈子ちゃん黄奈子ちゃん黄奈子ちゃん黄奈子ちゃん黄奈子ちゃん黃奈子ちゃん黄奈子ちゃん
@@ -368,7 +367,7 @@ hello worldは以下のように書きます。</p>
 黄奈子ちゃん黃奈子ちゃん黄奈子ちゃん黃奈子ちゃん黄奈子ちゃん黃奈子ちゃん黃奈子ちゃん黄奈孑ちゃん黃奈子ちゃん黄奈子ちゃん
 黄奈子ちゃん黄奈子ちゃん黃奈子ちゃん黄奈孑ちゃん黃奈子ちゃん黄奈子ちゃん黄奈子ちゃん黄奈子ちゃん黃奈子ちゃん黄奈孑ちゃん
 </code></pre></div><p>これをhello_world.knkとして保存して、</p>
-<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-zsh" data-lang="zsh">$ ./kinako-chan -n hello_world.knk
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-zsh" data-lang="zsh">$ ./kinako-chan -n hello_world.knk
 
 hello world!
 </code></pre></div><p>として実行するとhello world!の結果が得られると思います。<br>
@@ -389,7 +388,7 @@ hello world!
 C++の場合はstd::stringではなくstd::wstringを使って文字を表します。<br>
 いわゆるワイド文字の扱いをするわけです。ここで厄介なのがロケールの問題。<br>
 出力先の文字コードがわからないと上手く表示できないので予めコード内で設定する必要があるのです。</p>
-<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-cpp" data-lang="cpp"><span style="color:#75715e">#include</span> <span style="color:#75715e">&lt;iostream&gt;</span><span style="color:#75715e">
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-cpp" data-lang="cpp"><span style="color:#75715e">#include</span> <span style="color:#75715e">&lt;iostream&gt;</span><span style="color:#75715e">
 </span><span style="color:#75715e">#include</span> <span style="color:#75715e">&lt;string&gt;</span><span style="color:#75715e">
 </span><span style="color:#75715e"></span>
 <span style="color:#66d9ef">int</span> <span style="color:#a6e22e">main</span>(<span style="color:#66d9ef">void</span>){
@@ -408,7 +407,7 @@ C++の場合はstd::stringではなくstd::wstringを使って文字を表しま
 <h3 id="処理の大まかな流れ">処理の大まかな流れ</h3>
 <p>kinako-chanは今のところインタプリタで動作する言語です。<br>
 実行ファイルを吐いたりはせずその場で結果を出力します。</p>
-<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-zsh" data-lang="zsh">$ ./kinako-chan terget_file.knk
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-zsh" data-lang="zsh">$ ./kinako-chan terget_file.knk
 </code></pre></div><p>みたいな感じでファイル（拡張子は.knk）を引数に与えて実行します。<br>
 デフォルトではビジュアライズ機能もついていてどのコードの部分でどのようにデータが操作されているのかを見ることができます。<br>
 それでは大まかな処理の流れを見ながら解説していきましょう。</p>
@@ -418,7 +417,7 @@ C++の場合はstd::stringではなくstd::wstringを使って文字を表しま
 オプションごとにflagを書き換える感じで素直に実装してます。</p>
 <h4 id="2ファイル読み込み">2.ファイル読み込み</h4>
 <p>引数にファイルをとっているのでそれをstd::wstringに代入して処理しています。</p>
-<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-cpp" data-lang="cpp"><span style="color:#75715e">// read file
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-cpp" data-lang="cpp"><span style="color:#75715e">// read file
 </span><span style="color:#75715e"></span>std<span style="color:#f92672">::</span>wifstream file(filename);
 
 <span style="color:#66d9ef">if</span>(<span style="color:#f92672">!</span>file){
@@ -435,7 +434,7 @@ std<span style="color:#f92672">::</span>wstring source<span style="color:#f92672
 <h4 id="3コードを整形">3.コードを整形</h4>
 <p>コード整形と構文の確認をします。<br>
 具体的にはkinako-chanで採用している「黄,奈,子,ち,ゃ,ん,黃,孑」以外の文字（改行を含む）を除外します。</p>
-<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-cpp" data-lang="cpp"><span style="color:#66d9ef">void</span> <span style="color:#a6e22e">syntax_check</span>(std<span style="color:#f92672">::</span>wstring<span style="color:#f92672">&amp;</span> source){
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-cpp" data-lang="cpp"><span style="color:#66d9ef">void</span> <span style="color:#a6e22e">syntax_check</span>(std<span style="color:#f92672">::</span>wstring<span style="color:#f92672">&amp;</span> source){
 	<span style="color:#66d9ef">int</span> index<span style="color:#f92672">=</span><span style="color:#ae81ff">0</span>;
 	std<span style="color:#f92672">::</span>wstring tokens<span style="color:#f92672">=</span><span style="color:#e6db74">L</span><span style="color:#e6db74">&#34;黄奈子ちゃん黃孑&#34;</span>;
 	<span style="color:#66d9ef">while</span>(index<span style="color:#f92672">!=</span>source.size()){
@@ -460,7 +459,7 @@ std<span style="color:#f92672">::</span>wstring source<span style="color:#f92672
 <p>ついに処理です。<br>
 メモリを確保して命令に従ってデータポインタと数値を操作します。<br>
 配列は有限なのでデータポインタが配列の外側に行ってないかポインタを移動させる前に確認させます。</p>
-<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-cpp" data-lang="cpp"><span style="color:#66d9ef">void</span> <span style="color:#a6e22e">within_range</span>(<span style="color:#66d9ef">uint8_t</span> <span style="color:#f92672">*</span>now){
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-cpp" data-lang="cpp"><span style="color:#66d9ef">void</span> <span style="color:#a6e22e">within_range</span>(<span style="color:#66d9ef">uint8_t</span> <span style="color:#f92672">*</span>now){
 	<span style="color:#66d9ef">if</span>(now<span style="color:#f92672">-</span>head<span style="color:#f92672">&lt;</span><span style="color:#ae81ff">0</span> <span style="color:#f92672">||</span> now<span style="color:#f92672">&gt;</span>head<span style="color:#f92672">+</span>MEMORY_SIZE){
 		std<span style="color:#f92672">::</span>wcerr <span style="color:#f92672">&lt;&lt;</span> <span style="color:#e6db74">L</span><span style="color:#e6db74">&#34;now:&#34;</span> <span style="color:#f92672">&lt;&lt;</span> now <span style="color:#f92672">&lt;&lt;</span> <span style="color:#e6db74">L</span><span style="color:#e6db74">&#34; head:&#34;</span> <span style="color:#f92672">&lt;&lt;</span> head <span style="color:#f92672">&lt;&lt;</span> std<span style="color:#f92672">::</span>endl;
 		std<span style="color:#f92672">::</span>wcerr <span style="color:#f92672">&lt;&lt;</span> <span style="color:#e6db74">L</span><span style="color:#e6db74">&#34;now-head:&#34;</span> <span style="color:#f92672">&lt;&lt;</span> (<span style="color:#66d9ef">int</span>)(now<span style="color:#f92672">-</span>head) <span style="color:#f92672">&lt;&lt;</span> std<span style="color:#f92672">::</span>endl;
@@ -576,7 +575,7 @@ kinako-chanの内部システムでOS依存の処理だと考えられるのは�
 これでようやく気づきました。日本語の出力方法に問題があって止まっていたのです。<br>
 setlocaleは環境によってはかなり設定するのが厄介なのでおそらくここだと目星を付けました。<br>
 あとはエスパーしてmacで動きそうな方法を選んで修正しました。（2行追加）</p>
-<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-diff" data-lang="diff"><span style="color:#a6e22e">+ std::ios_base::sync_with_stdio(false);
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-diff" data-lang="diff"><span style="color:#a6e22e">+ std::ios_base::sync_with_stdio(false);
 </span><span style="color:#a6e22e"></span>  std::locale::global(std::locale(&#34;&#34;));
 <span style="color:#a6e22e">+ std::wcout.imbue(std::locale(&#34;&#34;));
 </span></code></pre></div><p>今思えばよくこんなあっさり手元にない環境に対応したコードをかけたな&hellip;（エスパーデバッガーの才能あり？）<br>
@@ -633,14 +632,14 @@ setlocaleは環境によってはかなり設定するのが厄介なのでお�
 <ol>
 <li id="fn:1" role="doc-endnote">
 <p>そういうプログラミング言語があるんです。<br>
-<a href="https://ja.wikipedia.org/wiki/Brainfuck">https://ja.wikipedia.org/wiki/Brainfuck</a> <a href="#fnref:1" class="footnote-backref" role="doc-backlink">&#x21a9;&#xfe0e;</a></p>
+<a href="https://ja.wikipedia.org/wiki/Brainfuck">https://ja.wikipedia.org/wiki/Brainfuck</a>&#160;<a href="#fnref:1" class="footnote-backref" role="doc-backlink">&#x21a9;&#xfe0e;</a></p>
 </li>
 <li id="fn:2" role="doc-endnote">
 <p>実際企業のプロジェクトでやるときはどうするんだろう。<br>
-外部のサービスを使うわけにも行かないだろうし。やっぱり内部で構築するのかな？ <a href="#fnref:2" class="footnote-backref" role="doc-backlink">&#x21a9;&#xfe0e;</a></p>
+外部のサービスを使うわけにも行かないだろうし。やっぱり内部で構築するのかな？&#160;<a href="#fnref:2" class="footnote-backref" role="doc-backlink">&#x21a9;&#xfe0e;</a></p>
 </li>
 <li id="fn:3" role="doc-endnote">
-<p>要は勘です。肝心なのは祈り。 <a href="#fnref:3" class="footnote-backref" role="doc-backlink">&#x21a9;&#xfe0e;</a></p>
+<p>要は勘です。肝心なのは祈り。&#160;<a href="#fnref:3" class="footnote-backref" role="doc-backlink">&#x21a9;&#xfe0e;</a></p>
 </li>
 </ol>
 </section>

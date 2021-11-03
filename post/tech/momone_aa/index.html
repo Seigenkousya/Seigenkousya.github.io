@@ -34,7 +34,7 @@ MathJax.Hub.Config({
 
 
 <meta charset="utf-8" />
-		<meta name="generator" content="Hugo 0.77.0" />
+		<meta name="generator" content="Hugo 0.88.1" />
 		<meta name="viewport" content="width=device-width, initial-scale=1" />
 		<meta name="author" content="Takana Norimasa" />
 		<meta name="description" content="" />
@@ -83,7 +83,6 @@ if (!doNotTrack) {
 	ga('send', 'pageview');
 }
 </script>
-
 		
 
 	</head>
@@ -157,7 +156,7 @@ if (!doNotTrack) {
 そんなこんな今回も気合で書いていきます。</p>
 <h2 id="環境">環境</h2>
 <p>前回に引き続きPerlで。</p>
-<pre><code class="language-terminal" data-lang="terminal">$ uname -a
+<pre tabindex="0"><code class="language-terminal" data-lang="terminal">$ uname -a
 Linux kali 4.18.0-kali2-amd64 #1 SMP Debian 4.18.10-2kali1 (2018-10-09) x86_64 GNU/Linux
 $ perl --version
 This is perl 5, version 28, subversion 1 (v5.28.1) built for x86_64-linux-gnu-thread-multi
@@ -168,9 +167,9 @@ This is perl 5, version 28, subversion 1 (v5.28.1) built for x86_64-linux-gnu-th
 </blockquote>
 <p>要はプログラムと出力がまったく等しいプログラムのことです。<br>
 perlでいうとこう。</p>
-<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-perl" data-lang="perl">$_<span style="color:#f92672">=</span><span style="color:#e6db74">q{print&#34;\$_=q{$_};eval&#34;}</span>;eval
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-perl" data-lang="perl">$_<span style="color:#f92672">=</span><span style="color:#e6db74">q{print&#34;\$_=q{$_};eval&#34;}</span>;eval
 </code></pre></div><p>実際に確かめてみると、</p>
-<pre><code class="language-terminal" data-lang="terminal">$ perl -E '$_=q{print&quot;\$_=q{$_};eval&quot;};eval'
+<pre tabindex="0"><code class="language-terminal" data-lang="terminal">$ perl -E '$_=q{print&quot;\$_=q{$_};eval&quot;};eval'
 $_=q{print&quot;\$_=q{$_};eval&quot;};eval
 </code></pre><p>たしかに入力と出力が一致する。<br>
 これは、</p>
@@ -187,15 +186,15 @@ $_=q{print&quot;\$_=q{$_};eval&quot;};eval
 それは、<code>print</code>命令の前に何を置いてもQuineとして成立するということです。<br>
 何を書こうが暗黙変数で参照されてQuineになりますが、標準出力に関係ない処理である必要があります。<br>
 例えば、変数<code>$hello</code>をprint命令の前に置いてもQuineは成立します。</p>
-<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-perl" data-lang="perl">$_<span style="color:#f92672">=</span><span style="color:#e6db74">q{$hello;print&#34;\$_=q{$_};eval&#34;}</span>;eval
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-perl" data-lang="perl">$_<span style="color:#f92672">=</span><span style="color:#e6db74">q{$hello;print&#34;\$_=q{$_};eval&#34;}</span>;eval
 </code></pre></div><p>試してみると、</p>
-<pre><code class="language-terminal" data-lang="terminal">$ perl -E '$_=q{$hello;print&quot;\$_=q{$_};eval&quot;};eval'
+<pre tabindex="0"><code class="language-terminal" data-lang="terminal">$ perl -E '$_=q{$hello;print&quot;\$_=q{$_};eval&quot;};eval'
 $_=q{$hello;print&quot;\$_=q{$_};eval&quot;};eval
 </code></pre><p>ちゃんと動く。<br>
 ならばこれを応用すればAAにも適用できるのでは？と考えました。</p>
 <h1 id="実際にやってみた">実際にやってみた</h1>
 <p>実際の構造はこんな感じ。</p>
-<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-perl" data-lang="perl">$_<span style="color:#f92672">=</span><span style="color:#e6db74">q|q* Ascii art *;print&#34;\$_=q{$_};eval&#34;;q* Ascii art *;|</span>;eval;
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-perl" data-lang="perl">$_<span style="color:#f92672">=</span><span style="color:#e6db74">q|q* Ascii art *;print&#34;\$_=q{$_};eval&#34;;q* Ascii art *;|</span>;eval;
 </code></pre></div><p>できるだけAscii artの部分を最大化してコード部分を短くしました。<br>
 q演算子の区切りにはAAで使用率の低かった<code>|</code>と<code>*</code>を採用しました。</p>
 <p>できたコードがこちら。（前回の上の画像と変わらないじゃないかだって？動かせば分かりますよ）</p>
@@ -218,7 +217,7 @@ q演算子の区切りにはAAで使用率の低かった<code>|</code>と<code>
 <hr>
 <ol>
 <li id="fn:1" role="doc-endnote">
-<p><a href="https://ja.wikipedia.org/wiki/%E3%82%AF%E3%83%AF%E3%82%A4%E3%83%B3_(%E3%83%97%E3%83%AD%E3%82%B0%E3%83%A9%E3%83%9F%E3%83%B3%E3%82%B0)">Quineのwikipedia</a> <a href="#fnref:1" class="footnote-backref" role="doc-backlink">&#x21a9;&#xfe0e;</a></p>
+<p><a href="https://ja.wikipedia.org/wiki/%E3%82%AF%E3%83%AF%E3%82%A4%E3%83%B3_(%E3%83%97%E3%83%AD%E3%82%B0%E3%83%A9%E3%83%9F%E3%83%B3%E3%82%B0)">Quineのwikipedia</a>&#160;<a href="#fnref:1" class="footnote-backref" role="doc-backlink">&#x21a9;&#xfe0e;</a></p>
 </li>
 </ol>
 </section>
